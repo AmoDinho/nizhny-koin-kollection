@@ -1,13 +1,9 @@
 import { gql, ApolloServer } from 'apollo-server-lambda';
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+import { Query } from './queries';
+import { typeDefs } from './typeDefs';
 
 const resolvers = {
-  Query: {},
+  Query: Query,
 };
 
 const server = new ApolloServer({
