@@ -1,9 +1,21 @@
-import { APIGatewayProxyHandlerV2 } from "aws-lambda";
+import { gql, ApolloServer } from 'apollo-server-lambda';
 
-export const handler: APIGatewayProxyHandlerV2 = async (event) => {
-  return {
-    statusCode: 200,
-    headers: { "Content-Type": "text/plain" },
-    body: `Hello, World! Your request was received at ${event.requestContext.time}.`,
-  };
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    hello: () => 'Hello, World!',
+  },
 };
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: !!process.env.IS_LOCAL,
+});
+
+export const handler = server.createHandler();
