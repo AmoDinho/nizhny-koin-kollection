@@ -1,4 +1,4 @@
-import { gql, ApolloServer } from 'apollo-server-lambda';
+import { ApolloServer } from 'apollo-server-lambda';
 import { Query } from './queries';
 import { typeDefs } from './typeDefs';
 
