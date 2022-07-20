@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sst start",
-    "build": "sst build",
-    "deploy": "sst deploy --stage=production",
-    "remove": "sst remove",
+    "start": "sst start --profile=personalAccount",
+    "build": "sst build --profile=personalAccount",
+    "deploy": "sst deploy --stage=production --profile=personalAccount",
+    "remove": "sst remove --profile=personalAccount",
     "console": "sst console",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
