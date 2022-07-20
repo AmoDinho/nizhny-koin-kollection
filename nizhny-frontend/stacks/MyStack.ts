@@ -1,12 +1,17 @@
 import { StackContext, Api, NextjsSite } from '@serverless-stack/resources';
+import { App } from 'aws-cdk-lib';
 
 export function MyStack({ stack }: StackContext) {
-  const api = new Api(stack, 'api', {
-    routes: {
-      'GET /': 'functions/lambda.handler',
-    },
-  });
+
+  const site = new NextjsSite(stack,"nizhny-frontend",{
+    path:"frontend",{
+      environment:{
+        REGION: app.region
+      }
+    }
+  })
+
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    URL: site.url,
   });
 }
