@@ -18,10 +18,14 @@ type Koin {
   koinName: String!
   koinType: KoinType!
   koinValue: Int!
-
+  bio: String!
+  position: String!
+  caps: Int!
 }
   type Query {
     hello: String
+    getAllKoins: [Koin!]
+    getAKoin(id:String): Koin
   }
 `;
 
