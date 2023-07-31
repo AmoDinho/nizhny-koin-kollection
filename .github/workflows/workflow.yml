@@ -3,9 +3,7 @@ name: Tripplo Mono-Repo CI/CD
 on:
   push:
     branches:
-      - main
-      - staging
-      - dev
+      - master
 
 jobs:
   build-nizhny-koin:
