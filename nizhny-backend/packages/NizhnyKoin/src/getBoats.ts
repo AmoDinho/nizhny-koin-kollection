@@ -1,6 +1,6 @@
-import Boats from '../data/boats.json';
-import { IBoat } from '../types';
-const getBoats = (): Array<IBoat> => {
-  return Boats;
+import Players from '../data/players.json';
+import { IPlayer } from '../types';
+const getPlayers = (): Array<IPlayer> => {
+  return Players;
 };
-export default getBoats;
+export default getPlayers;
