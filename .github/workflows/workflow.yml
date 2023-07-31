@@ -1,4 +1,4 @@
-name: Tripplo Mono-Repo CI/CD
+name: Nizhny Koin CI/CD
 
 on:
   push:
