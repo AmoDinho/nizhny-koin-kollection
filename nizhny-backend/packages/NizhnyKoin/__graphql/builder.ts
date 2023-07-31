@@ -1,35 +1,35 @@
 import SchemaBuilder from '@pothos/core';
-import { IBoat } from '../types';
-import getBoats from '../src/getBoats';
-import getABoat from '../src/getABoat';
+import { IPlayer } from '../types';
+import getPlayers from '../src/getPlayers';
+// import getABoat from '../src/getABoat';
 export const builder = new SchemaBuilder({});
 
-const IBoatGQL = builder.objectRef<IBoat>('IBoat');
+const IBoatGQL = builder.objectRef<IPlayer>('IPlayer');
 IBoatGQL.implement({
   fields: (t) => ({
-    boat_id: t.exposeString('boat_id'),
+    playerID: t.exposeString('playerID'),
   }),
 });
 
 builder.queryType({
   fields: (t) => ({
-    getBoats: t.field({
-      description: 'Get Baots',
+    getPlayers: t.field({
+      description: 'Get Players',
       type: [IBoatGQL],
-      resolve: () => getBoats(),
+      resolve: () => getPlayers(),
     }),
-    getABoat: t.field({
-      description: 'Get A Baot ',
-      type: [IBoatGQL],
-      args: {
-        boat_id: t.arg({
-          type: 'String',
-          description: 'Boat ID',
-          required: true,
-        }),
-      },
-      resolve: (root, args) => getABoat({ boat_id: args.boat_id }),
-    }),
+    // getABoat: t.field({
+    //   description: 'Get A Baot ',
+    //   type: [IBoatGQL],
+    //   args: {
+    //     boat_id: t.arg({
+    //       type: 'String',
+    //       description: 'Boat ID',
+    //       required: true,
+    //     }),
+    //   },
+    //   resolve: (root, args) => getABoat({ boat_id: args.boat_id }),
+    // }),
   }),
 });
 // builder.mutationType({});
