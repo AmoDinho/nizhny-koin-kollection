@@ -1,21 +1,21 @@
 import { Api } from 'sst/constructs';
 import { Construct } from 'constructs';
-export interface IServiceOneAPIResource {
-  ServiceOneAPI: Api;
+export interface INizhnyKoinAPIResource {
+  NizhnyKoinAPI: Api;
 }
 
-const ServiceOneAPI = (Stack: Construct): Api => {
-  const ServiceOneAPI = new Api(Stack, `ServiceOne-stack-api`, {
+const NizhnyKoinAPI = (Stack: Construct): Api => {
+  const NizhnyKoinAPI = new Api(Stack, `NizhnyKoin-stack-api`, {
     routes: {
-      'POST /ServiceOne-graphql': {
+      'POST /NizhnyKoin-graphql': {
         type: 'graphql',
-        function: 'packages/ServiceOne/__graphql/index.handler',
+        function: 'packages/NizhnyKoin/__graphql/index.handler',
       },
       // pothos: {
-      //   schema: 'packages/ServiceOne/__graphql/schema.ts',
-      //   output: 'packages/ServiceOne/__graphql/schema.graphql',
+      //   schema: 'packages/NizhnyKoin/__graphql/schema.ts',
+      //   output: 'packages/NizhnyKoin/__graphql/schema.graphql',
       //   commands: [
-      //     'cd packages/ServiceOne/__graphql && npx @genql/cli --output ./genql --schema ./schema.graphql --esm',
+      //     'cd packages/NizhnyKoin/__graphql && npx @genql/cli --output ./genql --schema ./schema.graphql --esm',
       //   ],
       // },
     },
@@ -26,13 +26,13 @@ const ServiceOneAPI = (Stack: Construct): Api => {
     },
   });
 
-  return ServiceOneAPI;
+  return NizhnyKoinAPI;
 };
 
-const ServiceOneResourcesAPI = (stack: Construct): IServiceOneAPIResource => {
+const NizhnyKoinResourcesAPI = (stack: Construct): INizhnyKoinAPIResource => {
   return {
-    ServiceOneAPI: ServiceOneAPI(stack),
+    NizhnyKoinAPI: NizhnyKoinAPI(stack),
   };
 };
 
-export default ServiceOneResourcesAPI;
+export default NizhnyKoinResourcesAPI;
