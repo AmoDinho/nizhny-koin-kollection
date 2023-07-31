@@ -1,0 +1,32 @@
+{
+  "name": "my-sst-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "IS_LOCAL=true sst dev --profile=personalAccount --stage=local --verbose",
+    "build": "sst build",
+    "deploy": "sst deploy",
+    "remove": "sst remove",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "aws-cdk-lib": "2.72.1",
+    "constructs": "10.1.156",
+    "sst": "^2.5.3",
+    "typescript": "^5.0.4"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.319.0",
+    "@aws-sdk/client-s3": "^3.319.0",
+    "@aws-sdk/lib-dynamodb": "^3.319.0",
+    "@aws-sdk/s3-request-presigner": "^3.319.0",
+    "@genql/cli": "^3.0.5",
+    "@pothos/core": "^3.29.0"
+  }
+}
