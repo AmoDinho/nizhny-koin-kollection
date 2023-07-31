@@ -30,7 +30,7 @@ jobs:
 
       # Install Dependencies
       - name: Install dependencies
-        run: yarn install --immutable
+        run: cd nizhny-backend && yarn install --immutable
 
       # Deploy to Development
       - name: Deploy to development
