@@ -1,5 +1,5 @@
 import { SSTConfig } from 'sst';
-import ServiceOneStack from './stacks/serviceOne';
+import NizhnyKoinStack from './stacks/NizhnyKoin';
 export default {
   config(_input) {
     return {
@@ -8,6 +8,6 @@ export default {
     };
   },
   stacks(app) {
-    app.stack(ServiceOneStack);
+    app.stack(NizhnyKoinStack);
   },
 } satisfies SSTConfig;
