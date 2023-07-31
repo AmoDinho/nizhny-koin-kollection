@@ -11,13 +11,13 @@ const NizhnyKoinAPI = (Stack: Construct): Api => {
         type: 'graphql',
         function: 'packages/NizhnyKoin/__graphql/index.handler',
       },
-      pothos: {
-        schema: 'packages/NizhnyKoin/__graphql/schema.ts',
-        output: 'packages/NizhnyKoin/__graphql/schema.graphql',
-        commands: [
-          'cd packages/NizhnyKoin/__graphql && npx @genql/cli --output ./genql --schema ./schema.graphql --esm',
-        ],
-      },
+      // pothos: {
+      //   schema: 'packages/NizhnyKoin/__graphql/schema.ts',
+      //   output: 'packages/NizhnyKoin/__graphql/schema.graphql',
+      //   commands: [
+      //     'cd packages/NizhnyKoin/__graphql && npx @genql/cli --output ./genql --schema ./schema.graphql --esm',
+      //   ],
+      // },
     },
     defaults: {
       function: {
