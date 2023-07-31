@@ -34,7 +34,7 @@ jobs:
 
       # Deploy to Development
       - name: Deploy to development
-        run: yarn deploy:dev
+        run: yarn deploy
         env:
           stage: deploy
           REGION: eu-west-1
