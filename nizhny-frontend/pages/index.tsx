@@ -1,7 +1,6 @@
 import App from '../components/App';
-
 import { initializeApollo, addApolloState } from '../lib/apolloClient';
-
+import { GET_PLAYERS } from '../graphql/players';
 const IndexPage = () => (
   <App>
     <p>hi</p>
@@ -9,18 +8,16 @@ const IndexPage = () => (
 );
 
 export async function getStaticProps() {
-  return {
-    props: {},
-  };
-  // const apolloClient = initializeApollo()
-  // await apolloClient.query({
-  //   query: ALL_POSTS_QUERY,
-  //   variables: allPostsQueryVars,
-  // })
-  // return addApolloState(apolloClient, {
-  //   props: {},
-  //   revalidate: 1,
-  // })
+  const apolloClient = initializeApollo();
+  const players = await apolloClient.query({
+    query: GET_PLAYERS,
+  });
+  return addApolloState(apolloClient, {
+    props: {
+      players,
+    },
+    revalidate: 1,
+  });
 }
 
 export default IndexPage;
