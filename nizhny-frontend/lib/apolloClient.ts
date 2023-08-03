@@ -20,7 +20,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: process.env.NEXT_BACKEND_ENDPOINT, // Server URL (must be absolute)
+  uri: process.env.NEXT_PUBLIC_BACKEND_ENDPOINT || process.env.BACKEND_ENDPOINT, // Server URL (must be absolute)
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 });
 
