@@ -4,8 +4,8 @@ import getPlayers from '../src/getPlayers';
 // import getABoat from '../src/getABoat';
 export const builder = new SchemaBuilder({});
 
-const IBoatGQL = builder.objectRef<IPlayer>('IPlayer');
-IBoatGQL.implement({
+const IPlayerGQL = builder.objectRef<IPlayer>('IPlayer');
+IPlayerGQL.implement({
   fields: (t) => ({
     playerID: t.exposeString('playerID'),
   }),
@@ -15,7 +15,7 @@ builder.queryType({
   fields: (t) => ({
     getPlayers: t.field({
       description: 'Get Players',
-      type: [IBoatGQL],
+      type: [IPlayerGQL],
       resolve: () => getPlayers(),
     }),
     // getABoat: t.field({
