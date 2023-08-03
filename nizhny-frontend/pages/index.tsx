@@ -1,23 +1,15 @@
 import App from '../components/App';
-import { initializeApollo, addApolloState } from '../lib/apolloClient';
-import { GET_PLAYERS } from '../graphql/players';
+import Players from '../components/Players';
 const IndexPage = () => (
   <App>
-    <p>hi</p>
+    <Players />
   </App>
 );
 
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
-  const players = await apolloClient.query({
-    query: GET_PLAYERS,
-  });
-  return addApolloState(apolloClient, {
-    props: {
-      players,
-    },
-    revalidate: 1,
-  });
+  return {
+    props: {},
+  };
 }
 
 export default IndexPage;
