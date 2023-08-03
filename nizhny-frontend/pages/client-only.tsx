@@ -1,8 +1,6 @@
-import App from '../components/App'
-import InfoBox from '../components/InfoBox'
-import Header from '../components/Header'
-import Submit from '../components/Submit'
-import PostList from '../components/PostList'
+import App from '../components/App';
+import InfoBox from '../components/InfoBox';
+import Header from '../components/Header';
 
 const ClientOnlyPage = (props) => (
   <App>
@@ -13,9 +11,7 @@ const ClientOnlyPage = (props) => (
       Apollo didn't fetch any data on the server. This is useful when the page
       doesn't have SEO requirements or blocking data fetching requirements.
     </InfoBox>
-    <Submit />
-    <PostList />
   </App>
-)
+);
 
-export default ClientOnlyPage
+export default ClientOnlyPage;

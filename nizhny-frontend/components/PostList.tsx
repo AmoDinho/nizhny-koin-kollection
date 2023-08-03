@@ -1,6 +1,5 @@
-import { gql, useQuery, NetworkStatus } from '@apollo/client'
-import ErrorMessage from './ErrorMessage'
-import PostUpvoter from './PostUpvoter'
+import { gql, useQuery, NetworkStatus } from '@apollo/client';
+import ErrorMessage from './ErrorMessage';
 
 export const ALL_POSTS_QUERY = gql`
   query allPosts($first: Int!, $skip: Int!) {
@@ -15,12 +14,12 @@ export const ALL_POSTS_QUERY = gql`
       count
     }
   }
-`
+`;
 
 export const allPostsQueryVars = {
   skip: 0,
   first: 10,
-}
+};
 
 export default function PostList() {
   const { loading, error, data, fetchMore, networkStatus } = useQuery(
@@ -32,23 +31,23 @@ export default function PostList() {
       // more data
       notifyOnNetworkStatusChange: true,
     }
-  )
+  );
 
-  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore
-  const { allPosts, _allPostsMeta } = data
+  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
+  const { allPosts, _allPostsMeta } = data;
 
   const loadMorePosts = () => {
     fetchMore({
       variables: {
         skip: allPosts.length,
       },
-    })
-  }
+    });
+  };
 
-  if (error) return <ErrorMessage message="Error loading posts." />
-  if (loading && !loadingMorePosts) return <div>Loading</div>
+  if (error) return <ErrorMessage message="Error loading posts." />;
+  if (loading && !loadingMorePosts) return <div>Loading</div>;
 
-  const areMorePosts = allPosts.length < _allPostsMeta.count
+  const areMorePosts = allPosts.length < _allPostsMeta.count;
 
   return (
     <section>
@@ -107,5 +106,5 @@ export default function PostList() {
         }
       `}</style>
     </section>
-  )
+  );
 }
