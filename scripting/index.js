@@ -6,15 +6,16 @@ const localFolderPath = path.join(__dirname, 'teams');
 const getName = (string) => string.replace(/\.png$/, '').split(' ');
 
 const hasSurname = (string) => {
-  if (string.split('').length > 0) {
-    true;
+  console.log('hasSurname-string', getName(string));
+  if (getName(string).length > 1) {
+    return true;
   }
 };
 
 const uploadPictures = async () => {
-  try {
-    let players = [];
+  let players = [];
 
+  try {
     const files = await fs.promises.readdir(localFolderPath);
 
     // console.log('files', files);
@@ -34,22 +35,19 @@ const uploadPictures = async () => {
           surname: hasSurname(team) ? getName(team)[1].toLowerCase() : null,
           country: folderPaths,
         };
-        // console.log('playerObject', playerObject);
+        console.log('playerObject', playerObject);
 
         players.push(playerObject);
+        // console.log('players', JSON.stringify(players));
       });
-      console.log('playerData', players.length);
 
-      //   const folderPathDir = path.join(__dirname, folderPaths);
-      //   console.log('fff', folderPathDir);
-      //   //   const filesDirectoryPaths = await path.join(__dirname, folderPathDir);
-      //   const files = await fs.promises.readdir(`${__dirname}/${folderPathDir}`);
-      //   console.log('fff-2', files);
+      // console.log('playerData', players.length);
     });
-    console.log('players', JSON.stringify(players));
   } catch (e) {
     console.error('eeeror', e.message);
   }
+
+  // console.log('players', JSON.stringify(players));
 };
 
 uploadPictures();
