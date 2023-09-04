@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
+const uploadFile = require('./supabase');
 const localFolderPath = path.join(__dirname, 'teams');
 
 const getName = (string) => string.replace(/\.png$/, '').split(' ');
@@ -29,6 +29,11 @@ const uploadPictures = async () => {
         const playerImg = path.join(`${__dirname}/teams/${folderPaths}`, team);
 
         const playerData = await fs.promises.readFile(playerImg);
+        const { data } = await uploadFile({
+          fileData: playerData,
+          filePath: `${folderPaths}/${team}`,
+        });
+        console.log('data', data);
 
         const playerObject = {
           url: '',
