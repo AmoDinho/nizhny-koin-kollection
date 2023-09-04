@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -7,8 +9,8 @@ const supabase = createClient(
 
 export const uploadFile = async ({ fileData, filePath }) => {
   const { data, error } = await supabase.storage
-    .from('')
-    .upload(filePath, fileData);
+    .from('nizhny-koin-ref')
+    .upload(`teams/${filePath}`, fileData);
 
   return {
     error,
