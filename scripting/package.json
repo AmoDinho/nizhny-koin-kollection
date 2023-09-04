@@ -1,6 +1,7 @@
 {
   "name": "scripting",
   "version": "1.0.0",
+  "module": "esm",
   "main": "index.js",
   "author": "AmoDinho",
   "license": "MIT",
