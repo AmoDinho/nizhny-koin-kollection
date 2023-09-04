@@ -6,7 +6,7 @@ const localFolderPath = path.join(__dirname, 'teams');
 const getName = (string) => string.replace(/\.png$/, '').split(' ');
 
 const hasSurname = (string) => {
-  console.log('hasSurname-string', getName(string));
+  // console.log('hasSurname-string', getName(string));
   if (getName(string).length > 1) {
     return true;
   }
@@ -33,18 +33,21 @@ const uploadPictures = async () => {
           fileData: playerData,
           filePath: `${folderPaths}/${team}`,
         });
-        console.log('data', data);
+        // console.log('data', data);
 
-        const playerObject = {
-          url: '',
-          name: getName(team)[0].toLowerCase(),
-          surname: hasSurname(team) ? getName(team)[1].toLowerCase() : null,
-          country: folderPaths,
-        };
-        console.log('playerObject', playerObject);
+        if (data && data.path) {
+          const playerObject = {
+            url: data.path,
+            name: getName(team)[0].toLowerCase(),
+            surname: hasSurname(team) ? getName(team)[1].toLowerCase() : null,
+            country: folderPaths,
+          };
+          // console.log('playerObject', playerObject);
 
-        players.push(playerObject);
-        // console.log('players', JSON.stringify(players));
+          players.push(playerObject);
+        }
+
+        console.log('players', JSON.stringify(players));
       });
 
       // console.log('playerData', players.length);

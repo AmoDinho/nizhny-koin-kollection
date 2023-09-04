@@ -1,0 +1,578 @@
+[
+  {
+    "url": "teams/australia/Aaron MOOY.png",
+    "name": "aaron",
+    "surname": "mooy",
+    "country": "australia"
+  },
+  {
+    "url": "teams/argentina/Ever BANEGA.png",
+    "name": "ever",
+    "surname": "banega",
+    "country": "argentina"
+  },
+  {
+    "url": "teams/costa_rica/Bryan RUIZ.png",
+    "name": "bryan",
+    "surname": "ruiz",
+    "country": "costa_rica"
+  },
+  {
+    "url": "teams/sweden/Sebastian LARSSON.png",
+    "name": "sebastian",
+    "surname": "larsson",
+    "country": "sweden"
+  },
+  {
+    "url": "teams/russia/Denis CHERYSHEV.png",
+    "name": "denis",
+    "surname": "cheryshev",
+    "country": "russia"
+  },
+  {
+    "url": "teams/argentina/Lionel MESSI.png",
+    "name": "lionel",
+    "surname": "messi",
+    "country": "argentina"
+  },
+  {
+    "url": "teams/columbia/Davinson SANCHEZ.png",
+    "name": "davinson",
+    "surname": "sanchez",
+    "country": "columbia"
+  },
+  {
+    "url": "teams/south_korea/KI Sungyueng.png",
+    "name": "ki",
+    "surname": "sungyueng",
+    "country": "south_korea"
+  },
+  {
+    "url": "teams/france/Kylian MBAPPE.png",
+    "name": "kylian",
+    "surname": "mbappe",
+    "country": "france"
+  },
+  {
+    "url": "teams/iceland/Johann GUDMUNDSSON.png",
+    "name": "johann",
+    "surname": "gudmundsson",
+    "country": "iceland"
+  },
+  {
+    "url": "teams/japan/Takashi INUI.png",
+    "name": "takashi",
+    "surname": "inui",
+    "country": "japan"
+  },
+  {
+    "url": "teams/nigeria/Oghenekaro ETEBO.png",
+    "name": "oghenekaro",
+    "surname": "etebo",
+    "country": "nigeria"
+  },
+  {
+    "url": "teams/england/Jordan Pickford.png",
+    "name": "jordan",
+    "surname": "pickford",
+    "country": "england"
+  },
+  {
+    "url": "teams/iceland/Aron GUNNARSSON.png",
+    "name": "aron",
+    "surname": "gunnarsson",
+    "country": "iceland"
+  },
+  {
+    "url": "teams/france/Antoine GRIEZMANN.png",
+    "name": "antoine",
+    "surname": "griezmann",
+    "country": "france"
+  },
+  {
+    "url": "teams/brazil/CASEMIRO.png",
+    "name": "casemiro",
+    "surname": null,
+    "country": "brazil"
+  },
+  {
+    "url": "teams/costa_rica/Joel CAMPBELL.png",
+    "name": "joel",
+    "surname": "campbell",
+    "country": "costa_rica"
+  },
+  {
+    "url": "teams/egypt/Mohamed Salah.png",
+    "name": "mohamed",
+    "surname": "salah",
+    "country": "egypt"
+  },
+  {
+    "url": "teams/brazil/PHILIPPE COUTINHO.png",
+    "name": "philippe",
+    "surname": "coutinho",
+    "country": "brazil"
+  },
+  {
+    "url": "teams/crotia/Luka MODRIC.png",
+    "name": "luka",
+    "surname": "modric",
+    "country": "crotia"
+  },
+  {
+    "url": "teams/denmark/Simon KJAER.png",
+    "name": "simon",
+    "surname": "kjaer",
+    "country": "denmark"
+  },
+  {
+    "url": "teams/columbia/James RODRIGUEZ.png",
+    "name": "james",
+    "surname": "rodriguez",
+    "country": "columbia"
+  },
+  {
+    "url": "teams/brazil/NEYMAR.png",
+    "name": "neymar",
+    "surname": null,
+    "country": "brazil"
+  },
+  {
+    "url": "teams/belgium/Eden HAZARD.png",
+    "name": "eden",
+    "surname": "hazard",
+    "country": "belgium"
+  },
+  {
+    "url": "teams/germany/Toni KROOS.png",
+    "name": "toni",
+    "surname": "kroos",
+    "country": "germany"
+  },
+  {
+    "url": "teams/germany/Marco REUS.png",
+    "name": "marco",
+    "surname": "reus",
+    "country": "germany"
+  },
+  {
+    "url": "teams/england/Harry Kane.png",
+    "name": "harry",
+    "surname": "kane",
+    "country": "england"
+  },
+  {
+    "url": "teams/denmark/Kasper SCHMEICHEL.png",
+    "name": "kasper",
+    "surname": "schmeichel",
+    "country": "denmark"
+  },
+  {
+    "url": "teams/france/Ngolo KANTE.png",
+    "name": "ngolo",
+    "surname": "kante",
+    "country": "france"
+  },
+  {
+    "url": "teams/egypt/Essam El-Hadary.png",
+    "name": "essam",
+    "surname": "el-hadary",
+    "country": "egypt"
+  },
+  {
+    "url": "teams/morocco/Hakim ZIYACH.png",
+    "name": "hakim",
+    "surname": "ziyach",
+    "country": "morocco"
+  },
+  {
+    "url": "teams/panama/Gabriel TORRES.png",
+    "name": "gabriel",
+    "surname": "torres",
+    "country": "panama"
+  },
+  {
+    "url": "teams/peru/Christian RAMOS.png",
+    "name": "christian",
+    "surname": "ramos",
+    "country": "peru"
+  },
+  {
+    "url": "teams/iran/Sardar AZMOUN.png",
+    "name": "sardar",
+    "surname": "azmoun",
+    "country": "iran"
+  },
+  {
+    "url": "teams/peru/Paolo GUERRERO.png",
+    "name": "paolo",
+    "surname": "guerrero",
+    "country": "peru"
+  },
+  {
+    "url": "teams/senegal/Ismaila SARR.png",
+    "name": "ismaila",
+    "surname": "sarr",
+    "country": "senegal"
+  },
+  {
+    "url": "teams/peru/Andre CARRILLO.png",
+    "name": "andre",
+    "surname": "carrillo",
+    "country": "peru"
+  },
+  {
+    "url": "teams/poland/Jakub BLASZCZYKOWSKI.png",
+    "name": "jakub",
+    "surname": "blaszczykowski",
+    "country": "poland"
+  },
+  {
+    "url": "teams/panama/Luis TEJADA.png",
+    "name": "luis",
+    "surname": "tejada",
+    "country": "panama"
+  },
+  {
+    "url": "teams/mexico/Hirving LOZANO.png",
+    "name": "hirving",
+    "surname": "lozano",
+    "country": "mexico"
+  },
+  {
+    "url": "teams/iran/Karim Ansarifard.png",
+    "name": "karim",
+    "surname": "ansarifard",
+    "country": "iran"
+  },
+  {
+    "url": "teams/saudi_arabia/Fahad Al-Muwallad.png",
+    "name": "fahad",
+    "surname": "al-muwallad",
+    "country": "saudi_arabia"
+  },
+  {
+    "url": "teams/iran/Ali BEIRANVAND.png",
+    "name": "ali",
+    "surname": "beiranvand",
+    "country": "iran"
+  },
+  {
+    "url": "teams/japan/Yuto Nagamoto.png",
+    "name": "yuto",
+    "surname": "nagamoto",
+    "country": "japan"
+  },
+  {
+    "url": "teams/australia/Mathew LECKIE.png",
+    "name": "mathew",
+    "surname": "leckie",
+    "country": "australia"
+  },
+  {
+    "url": "teams/belgium/Jan VERTONGHEN.png",
+    "name": "jan",
+    "surname": "vertonghen",
+    "country": "belgium"
+  },
+  {
+    "url": "teams/costa_rica/Keylor NAVAS.png",
+    "name": "keylor",
+    "surname": "navas",
+    "country": "costa_rica"
+  },
+  {
+    "url": "teams/columbia/Yerry MINA.png",
+    "name": "yerry",
+    "surname": "mina",
+    "country": "columbia"
+  },
+  {
+    "url": "teams/argentina/Javier MASCHERANO.png",
+    "name": "javier",
+    "surname": "mascherano",
+    "country": "argentina"
+  },
+  {
+    "url": "teams/crotia/Ivan RAKITIC.png",
+    "name": "ivan",
+    "surname": "rakitic",
+    "country": "crotia"
+  },
+  {
+    "url": "teams/morocco/Mehdi BENATIA.png",
+    "name": "mehdi",
+    "surname": "benatia",
+    "country": "morocco"
+  },
+  {
+    "url": "teams/poland/Robert LEWANDOWSKI.png",
+    "name": "robert",
+    "surname": "lewandowski",
+    "country": "poland"
+  },
+  {
+    "url": "teams/australia/Mile JEDINAK.png",
+    "name": "mile",
+    "surname": "jedinak",
+    "country": "australia"
+  },
+  {
+    "url": "teams/uruguay/Luis Suarez.png",
+    "name": "luis",
+    "surname": "suarez",
+    "country": "uruguay"
+  },
+  {
+    "url": "teams/england/Kieran TRIPPIER.png",
+    "name": "kieran",
+    "surname": "trippier",
+    "country": "england"
+  },
+  {
+    "url": "teams/russia/Igor Akinfeev.png",
+    "name": "igor",
+    "surname": "akinfeev",
+    "country": "russia"
+  },
+  {
+    "url": "teams/tunisia/Dylan BRONN.png",
+    "name": "dylan",
+    "surname": "bronn",
+    "country": "tunisia"
+  },
+  {
+    "url": "teams/mexico/Andres GUARDADO.png",
+    "name": "andres",
+    "surname": "guardado",
+    "country": "mexico"
+  },
+  {
+    "url": "teams/senegal/Mbaye NIANG.png",
+    "name": "mbaye",
+    "surname": "niang",
+    "country": "senegal"
+  },
+  {
+    "url": "teams/japan/Shinji KAGAWA.png",
+    "name": "shinji",
+    "surname": "kagawa",
+    "country": "japan"
+  },
+  {
+    "url": "teams/crotia/Mario MANDZUKIC.png",
+    "name": "mario",
+    "surname": "mandzukic",
+    "country": "crotia"
+  },
+  {
+    "url": "teams/panama/Roman TORRES.png",
+    "name": "roman",
+    "surname": "torres",
+    "country": "panama"
+  },
+  {
+    "url": "teams/saudi_arabia/Abdullah Al-Khaibari.png",
+    "name": "abdullah",
+    "surname": "al-khaibari",
+    "country": "saudi_arabia"
+  },
+  {
+    "url": "teams/denmark/Christian ERIKSEN.png",
+    "name": "christian",
+    "surname": "eriksen",
+    "country": "denmark"
+  },
+  {
+    "url": "teams/nigeria/Ahmed MUSA.png",
+    "name": "ahmed",
+    "surname": "musa",
+    "country": "nigeria"
+  },
+  {
+    "url": "teams/serbia/Nemanja MATIC.png",
+    "name": "nemanja",
+    "surname": "matic",
+    "country": "serbia"
+  },
+  {
+    "url": "teams/mexico/Javier HERNANDEZ.png",
+    "name": "javier",
+    "surname": "hernandez",
+    "country": "mexico"
+  },
+  {
+    "url": "teams/spain/Sergio RAMOS.png",
+    "name": "sergio",
+    "surname": "ramos",
+    "country": "spain"
+  },
+  {
+    "url": "teams/portugal/JOAO MARIO.png",
+    "name": "joao",
+    "surname": "mario",
+    "country": "portugal"
+  },
+  {
+    "url": "teams/germany/Joshua KIMMICH.png",
+    "name": "joshua",
+    "surname": "kimmich",
+    "country": "germany"
+  },
+  {
+    "url": "teams/switzerland/Xherdan SHAQIRI.png",
+    "name": "xherdan",
+    "surname": "shaqiri",
+    "country": "switzerland"
+  },
+  {
+    "url": "teams/belgium/Romelu LUKAKU.png",
+    "name": "romelu",
+    "surname": "lukaku",
+    "country": "belgium"
+  },
+  {
+    "url": "teams/uruguay/Edinson Cavani.png",
+    "name": "edinson",
+    "surname": "cavani",
+    "country": "uruguay"
+  },
+  {
+    "url": "teams/tunisia/Ferjani SASSI.png",
+    "name": "ferjani",
+    "surname": "sassi",
+    "country": "tunisia"
+  },
+  {
+    "url": "teams/switzerland/Yann SOMMER.png",
+    "name": "yann",
+    "surname": "sommer",
+    "country": "switzerland"
+  },
+  {
+    "url": "teams/sweden/Emil FORSBERG.png",
+    "name": "emil",
+    "surname": "forsberg",
+    "country": "sweden"
+  },
+  {
+    "url": "teams/tunisia/Wahbi KHAZRI.png",
+    "name": "wahbi",
+    "surname": "khazri",
+    "country": "tunisia"
+  },
+  {
+    "url": "teams/morocco/Achraf HAKIMI.png",
+    "name": "achraf",
+    "surname": "hakimi",
+    "country": "morocco"
+  },
+  {
+    "url": "teams/poland/Wojciech SZCZESNY.png",
+    "name": "wojciech",
+    "surname": "szczesny",
+    "country": "poland"
+  },
+  {
+    "url": "teams/serbia/Aleksandar KOLAROV.png",
+    "name": "aleksandar",
+    "surname": "kolarov",
+    "country": "serbia"
+  },
+  {
+    "url": "teams/egypt/Mohamed Elneny.png",
+    "name": "mohamed",
+    "surname": "elneny",
+    "country": "egypt"
+  },
+  {
+    "url": "teams/spain/Andres INIESTA.png",
+    "name": "andres",
+    "surname": "iniesta",
+    "country": "spain"
+  },
+  {
+    "url": "teams/iceland/Gylfi SIGURDSSON.png",
+    "name": "gylfi",
+    "surname": "sigurdsson",
+    "country": "iceland"
+  },
+  {
+    "url": "teams/spain/ISCO.png",
+    "name": "isco",
+    "surname": null,
+    "country": "spain"
+  },
+  {
+    "url": "teams/portugal/RAPHAEL GUERREIRO.png",
+    "name": "raphael",
+    "surname": "guerreiro",
+    "country": "portugal"
+  },
+  {
+    "url": "teams/saudi_arabia/Mohammed Al-Sahlawi.png",
+    "name": "mohammed",
+    "surname": "al-sahlawi",
+    "country": "saudi_arabia"
+  },
+  {
+    "url": "teams/portugal/CRISTIANO RONALDO.png",
+    "name": "cristiano",
+    "surname": "ronaldo",
+    "country": "portugal"
+  },
+  {
+    "url": "teams/nigeria/Victor MOSES.png",
+    "name": "victor",
+    "surname": "moses",
+    "country": "nigeria"
+  },
+  {
+    "url": "teams/senegal/Sadio MANE.png",
+    "name": "sadio",
+    "surname": "mane",
+    "country": "senegal"
+  },
+  {
+    "url": "teams/russia/Aleksandr Golovin.png",
+    "name": "aleksandr",
+    "surname": "golovin",
+    "country": "russia"
+  },
+  {
+    "url": "teams/serbia/Aleksandar MITROVIC.png",
+    "name": "aleksandar",
+    "surname": "mitrovic",
+    "country": "serbia"
+  },
+  {
+    "url": "teams/south_korea/SON Heungmin.png",
+    "name": "son",
+    "surname": "heungmin",
+    "country": "south_korea"
+  },
+  {
+    "url": "teams/uruguay/Diego Godin.png",
+    "name": "diego",
+    "surname": "godin",
+    "country": "uruguay"
+  },
+  {
+    "url": "teams/south_korea/JO Hyeonwoo.png",
+    "name": "jo",
+    "surname": "hyeonwoo",
+    "country": "south_korea"
+  },
+  {
+    "url": "teams/switzerland/Granit XHAKA.png",
+    "name": "granit",
+    "surname": "xhaka",
+    "country": "switzerland"
+  },
+  {
+    "url": "teams/sweden/Andreas GRANQVIST.png",
+    "name": "andreas",
+    "surname": "granqvist",
+    "country": "sweden"
+  }
+]

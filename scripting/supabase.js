@@ -16,11 +16,8 @@ const uploadFile = async ({ fileData, filePath }) => {
   const { data, error } = await supabase.storage
     .from('nizhny-koin-ref')
     .upload(`teams/${filePath}`, fileData);
-  console.log('uploadFile', error, data);
-  return {
-    error,
-    data,
-  };
+  //   console.log('uploadFile', error, data);
+  return { data, error };
 };
 
 module.exports = uploadFile;
