@@ -29,6 +29,7 @@ const uploadPictures = async () => {
         const playerImg = path.join(`${__dirname}/teams/${folderPaths}`, team);
 
         const playerData = await fs.promises.readFile(playerImg);
+
         const playerObject = {
           url: '',
           name: getName(team)[0].toLowerCase(),
@@ -47,7 +48,7 @@ const uploadPictures = async () => {
     console.error('eeeror', e.message);
   }
 
-  // console.log('players', JSON.stringify(players));
+  console.log('players', JSON.stringify(players));
 };
 
 uploadPictures();
