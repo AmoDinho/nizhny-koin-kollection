@@ -8,7 +8,11 @@ const ParentImage = ({
   imagePath,
   additionalClassNames,
 }: ImageProps): React.JSX.Element => (
-  <Image src={imagePath} alt="something went wrong" />
+  <Image
+    src={imagePath}
+    alt="something went wrong"
+    className={additionalClassNames}
+  />
 );
 
 export default ParentImage;
