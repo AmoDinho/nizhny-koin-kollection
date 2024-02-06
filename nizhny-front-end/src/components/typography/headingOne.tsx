@@ -1,7 +1,7 @@
 interface HeadingProps {
-  text: string;
+  children: React.ReactNode;
 }
 
-export const HeadingOne = ({ text }: HeadingProps): React.JSX.Element => (
-  <h1 className="text-3xl">{text}</h1>
+export const HeadingOne = ({ children }: HeadingProps): React.JSX.Element => (
+  <h1 className="text-3xl">{children}</h1>
 );
