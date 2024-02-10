@@ -1,3 +1,3 @@
-import { HeadingOne } from './headingOne';
+import { TypographyWrapper } from './TypographyWrapper';
 
-export { HeadingOne };
+export { TypographyWrapper };

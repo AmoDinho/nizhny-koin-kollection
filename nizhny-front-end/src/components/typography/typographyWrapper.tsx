@@ -1,6 +1,6 @@
 interface IHeadingProps {
   WrapperTypes: 'HeadingOne' | 'HeadingTwo' | 'HeadingThree' | 'HeadingFour';
-  additonalClassNames: string;
+  additonalClassNames?: string;
   children: React.ReactNode;
 }
 
