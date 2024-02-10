@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'font-advent': 'var(--font-advent)',
-        'font-bungee': 'var(--font-bungee)',
+        advent: 'var(--font-advent)',
+        bungee: 'var(--font-bungee)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
