@@ -1,3 +1,3 @@
-import { TypographyWrapper } from './TypographyWrapper';
+import { TypographyWrapper } from './typographyWrapper';
 
 export { TypographyWrapper };
