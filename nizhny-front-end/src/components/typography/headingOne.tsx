@@ -18,7 +18,7 @@ const wrapperSettings: IWrapperSettings = {
   HeadingFour: 'text-base font-advent',
 };
 
-export const HeadingOne = ({
+export const TypographyWrapper = ({
   WrapperTypes,
   children,
   additonalClassNames,
