@@ -1,7 +1,7 @@
 import ParentImage from '@/components/image/parentImage';
 import HeaderImage from '@/static/images/nizhny_banner.svg';
 import BottomImage from '@/static/images/bottom_illustrations.svg';
-
+import { Button } from '@/components/ui/button';
 import { TypographyWrapper } from '@/components/typography';
 export default function Home() {
   return (
@@ -12,7 +12,11 @@ export default function Home() {
       >
         Nizhny Koin Kollection
       </TypographyWrapper>
+
       <ParentImage imagePath={HeaderImage} />
+      <div>
+        <Button>Log In</Button>
+      </div>
       <ParentImage imagePath={BottomImage} />
     </main>
   );
