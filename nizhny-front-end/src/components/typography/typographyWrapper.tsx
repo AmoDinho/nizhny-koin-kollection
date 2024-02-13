@@ -4,18 +4,22 @@ interface IHeadingProps {
   children: React.ReactNode;
 }
 
-type IWrapperSettings = {
-  HeadingOne: string;
-  HeadingTwo: string;
-  HeadingThree: string;
-  HeadingFour: string;
-};
+enum EWrapperSettings {
+  HeadingOne = 'text-4xl font-bungee',
+  HeadingTwo = 'text-2xl font-bungee',
+  HeadingThree = 'text-xl font-advent',
+  HeadingFour = 'text-base font-advent',
+}
 
-const wrapperSettings: IWrapperSettings = {
+const wrapperSettings = {
   HeadingOne: 'text-4xl font-bungee',
   HeadingTwo: 'text-2xl font-bungee',
   HeadingThree: 'text-xl font-advent',
   HeadingFour: 'text-base font-advent',
+};
+
+type wrapperSettings = {
+  [key in EWrapperSettings]: string;
 };
 
 export const TypographyWrapper = ({
