@@ -42,7 +42,19 @@ export default function Login() {
 
   return (
     <main>
-      <p>Login</p>
+      <input
+        name="email"
+        onChange={(e) =>
+          handleFormChange({ key: 'email', value: e.currentTarget.value })
+        }
+      />
+      <input
+        name="password"
+        onChange={(e) =>
+          handleFormChange({ key: 'password', value: e.currentTarget.value })
+        }
+      />
+      <button onClick={handleSignIn}>Sign In</button>
     </main>
   );
 }
