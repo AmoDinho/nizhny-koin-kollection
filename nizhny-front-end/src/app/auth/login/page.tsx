@@ -32,6 +32,14 @@ export default function Login() {
     setFormState(formStateClone);
   };
 
+  const handleSignIn = async (): Promise<void> => {
+    await supabase.auth.signInWithPassword({
+      email: formState.email,
+      password: formState.password,
+    });
+    router.refresh();
+  };
+
   return (
     <main>
       <p>Login</p>
