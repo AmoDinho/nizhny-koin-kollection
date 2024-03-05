@@ -1,9 +1,12 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import ParentImage from '@/components/image/parentImage';
 import HeaderImage from '@/static/images/nizhny_banner.svg';
 import BottomImage from '@/static/images/bottom_illustrations.svg';
 import { Button } from '@/components/ui/button';
 import { TypographyWrapper } from '@/components/typography';
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <TypographyWrapper
@@ -15,7 +18,7 @@ export default function Home() {
 
       <ParentImage imagePath={HeaderImage} />
       <div>
-        <Button>Log In</Button>
+        <Button onClick={() => router.push('/auth/login')}>Log In</Button>
       </div>
       <ParentImage imagePath={BottomImage} />
     </main>
