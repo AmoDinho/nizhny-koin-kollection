@@ -53,10 +53,13 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="grid grid-cols-1 p-20">
       <h1>Log In</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSignIn)}>
+        <form
+          onSubmit={form.handleSubmit(handleSignIn)}
+          className="grid grid-cols-1 p-4 bg-white rounded-xl"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -69,8 +72,9 @@ export default function Login() {
               </FormItem>
             )}
           />
+
+          <Button onClick={() => router.push('/auth/login')}>Log In</Button>
         </form>
-        <Button onClick={() => router.push('/auth/login')}>Log In</Button>
       </Form>
       {/* <input
           name="email"
