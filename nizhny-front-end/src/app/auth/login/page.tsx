@@ -53,7 +53,7 @@ export default function Login() {
   };
 
   return (
-    <div className="grid grid-cols-1 p-20">
+    <div className="grid grid-cols-1 p-5 justify-items-center">
       <h1>Log In</h1>
       <Form {...form}>
         <form
