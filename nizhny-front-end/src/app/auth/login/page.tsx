@@ -18,15 +18,17 @@ import {
 import type { Database } from '@/types/supabase';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-type TFormData = {
-  email: string;
-  password: string;
-};
 
-type TFormPayload = {
-  key: string;
-  value: string;
-};
+import { TypographyWrapper } from '@/components/typography';
+// type TFormData = {
+//   email: string;
+//   password: string;
+// };
+
+// type TFormPayload = {
+//   key: string;
+//   value: string;
+// };
 
 type IKeyFieldsType = 'email' | 'password';
 export default function Login() {
@@ -75,7 +77,10 @@ export default function Login() {
 
   return (
     <div className="grid grid-cols-1 p-5 justify-items-center">
-      <h1>Log In</h1>
+      <TypographyWrapper WrapperTypes="HeadingOne" additonalClassNames="mb-10">
+        {' '}
+        Log In
+      </TypographyWrapper>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSignIn)}
