@@ -68,11 +68,16 @@ export default function Login() {
     values: z.infer<typeof formSchema>
   ): Promise<void> => {
     console.log('values', values);
-    // await supabase.auth.signInWithPassword({
-    //   email: formState.email,
-    //   password: formState.password,
-    // });
-    // router.refresh();
+    try {
+      await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      router.refresh();
+      router.push('/team/dashboard');
+    } catch (e) {
+      return alert('issue logging you in');
+    }
   };
 
   return (
@@ -93,7 +98,7 @@ export default function Login() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" pattern=".+@example\.com" />
+                  <Input {...field} type="email" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
