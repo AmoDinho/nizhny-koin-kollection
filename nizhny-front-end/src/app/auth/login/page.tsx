@@ -4,6 +4,8 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -28,22 +30,37 @@ type TFormPayload = {
 
 type IKeyFieldsType = 'email' | 'password';
 export default function Login() {
-  const [formState, setFormState] = useState<TFormData>({
-    email: '',
-    password: '',
+  // const [formState, setFormState] = useState<TFormData>({
+  //   email: '',
+  //   password: '',
+  // });
+  const formSchema = z.object({
+    email: z
+      .string()
+      .min(2, {
+        message: 'Email must be a valid email',
+      })
+      .max(50),
   });
   const router = useRouter();
-  const form = useForm();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+    },
+  });
   const supabase = createClientComponentClient<Database>();
 
-  const handleFormChange = ({ key, value }: TFormPayload) => {
-    let formStateClone: TFormData = { ...formState };
-    formStateClone[key as IKeyFieldsType] = value;
+  // const handleFormChange = ({ key, value }: TFormPayload) => {
+  //   let formStateClone: TFormData = { ...formState };
+  //   formStateClone[key as IKeyFieldsType] = value;
 
-    setFormState(formStateClone);
-  };
+  //   setFormState(formStateClone);
+  // };
 
-  const handleSignIn = async (values): Promise<void> => {
+  const handleSignIn = async (
+    values: z.infer<typeof formSchema>
+  ): Promise<void> => {
     console.log('values', values);
     // await supabase.auth.signInWithPassword({
     //   email: formState.email,
@@ -67,8 +84,9 @@ export default function Login() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} type="email" pattern=".+@example\.com" />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
