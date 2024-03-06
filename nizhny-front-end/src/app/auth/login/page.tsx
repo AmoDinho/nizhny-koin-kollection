@@ -41,12 +41,16 @@ export default function Login() {
         message: 'Email must be a valid email',
       })
       .max(50),
+    password: z.string().min(6, {
+      message: 'Please enter your password',
+    }),
   });
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
+      password: '',
     },
   });
   const supabase = createClientComponentClient<Database>();
@@ -90,7 +94,19 @@ export default function Login() {
               </FormItem>
             )}
           />
-
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input {...field} type="password" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <Button onClick={() => router.push('/auth/login')}>Log In</Button>
         </form>
       </Form>
