@@ -1,8 +1,10 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 import type { Database } from '@/types/supabase';
 import { TypographyWrapper } from '@/components/typography';
+import { Button } from '@/components/ui/button';
 export default async function Dashboard() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
@@ -26,6 +28,10 @@ export default async function Dashboard() {
         <TypographyWrapper WrapperTypes="HeadingThree">
           Please start with creating a team
         </TypographyWrapper>
+
+        <Button>
+          <Link href={`/team/create`}>Create new team</Link>
+        </Button>
       </div>
     </div>
   );
