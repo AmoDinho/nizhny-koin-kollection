@@ -22,6 +22,11 @@ export default async function Dashboard() {
       >
         Your Team Dashboard
       </TypographyWrapper>
+      <div className="grid grid-cols-1">
+        <TypographyWrapper WrapperTypes="HeadingThree">
+          Please start with creating a team
+        </TypographyWrapper>
+      </div>
     </div>
   );
 }
