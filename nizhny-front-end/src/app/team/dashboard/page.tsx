@@ -30,7 +30,7 @@ export default async function Dashboard() {
         </TypographyWrapper>
 
         <Button>
-          <Link href={`/team/create`}>Create new team</Link>
+          <Link href={`/team/create?tabState=one`}>Create new team</Link>
         </Button>
       </div>
     </div>
