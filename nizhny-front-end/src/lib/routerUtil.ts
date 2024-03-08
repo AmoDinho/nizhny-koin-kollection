@@ -5,21 +5,23 @@
 return function
 */
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { createUrl } from './utils';
-type searchParamsType = string;
-export const RouterUtil = (
-  routeTarget: string,
-  searchParams: searchParamsType
-) => {
+export const useRouterUtil = () => {
   const router = useRouter();
-  const newParams = new URLSearchParams(searchParams.toString());
+  const handleRouteChange = (routeTarget: string, searchParams: string) => {
+    const newParams = new URLSearchParams(searchParams.toString());
 
-  if (routeTarget) {
-    newParams.set('tabState', routeTarget);
-  } else {
-    newParams.delete('tabState');
-  }
+    console.log('newParams', newParams, routeTarget);
+    if (routeTarget) {
+      newParams.set('tabState', routeTarget);
+    } else {
+      newParams.delete('tabState');
+    }
 
-  router.push(createUrl('team/create?tabState', newParams));
+    console.log('check', createUrl('team/create', newParams), newParams);
+    router.push(createUrl('team/create', newParams));
+  };
+
+  return { handleRouteChange };
 };
