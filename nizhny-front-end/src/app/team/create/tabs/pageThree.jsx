@@ -17,6 +17,14 @@ export default function PageOne() {
         Build your team
       </TypographyWrapper>
 
+      <div>
+        <div className="bg-white rounded-lg h-10 w-10">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
       <Button className="mt-5">Next</Button>
       <Button
         varaint="secondary"
