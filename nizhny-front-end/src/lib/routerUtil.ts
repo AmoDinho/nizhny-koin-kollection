@@ -6,7 +6,7 @@ return function
 */
 
 import { useRouter } from 'next/router';
-
+import { createUrl } from './utils';
 type searchParamsType = string;
 export const RouterUtil = (
   routeTarget: string,
@@ -21,5 +21,5 @@ export const RouterUtil = (
     newParams.delete('tabState');
   }
 
-  router.push(createUrl);
+  router.push(createUrl('team/create?tabState', newParams));
 };

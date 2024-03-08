@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const createUrl = (
   pathName: string,
-  params: ReadonlyURLSearchParams
+  params: URLSearchParams | ReadonlyURLSearchParams
 ) => {
   const paramsString = params.toString();
   const queryString = `${paramsString.length ? '?' : ''}${paramsString}`;
