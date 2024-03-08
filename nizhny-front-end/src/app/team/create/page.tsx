@@ -2,6 +2,7 @@
 import { useSearchParams } from 'next/navigation';
 import PageOne from './tabs/pageOne';
 import PageTwo from './tabs/pageTwo';
+import PageThree from './tabs/pageThree';
 
 export default function CreateTeam() {
   const searchParams = useSearchParams();
@@ -14,7 +15,8 @@ export default function CreateTeam() {
         return <PageOne />;
       case 'two':
         return <PageTwo />;
-
+      case 'three':
+        return <PageThree />;
       default:
         return <p>No component selected</p>;
     }
