@@ -3,21 +3,24 @@ import { CheckCircleIcon } from '@heroicons/react/16/solid';
 import { TypographyWrapper } from '@/components/typography';
 import { IFeatureArray } from '@/types/types';
 export default function PageTwo() {
+  const renderIcon = () => (
+    <CheckCircleIcon className="h-10 w-10 text-green-500" />
+  );
   const featuresArray: IFeatureArray = [
     {
       id: '1',
       label: '$300 for players',
-      icon: <CheckCircleIcon />,
+      icon: renderIcon(),
     },
     {
       id: '2',
       label: '5 players in the squad',
-      icon: <CheckCircleIcon />,
+      icon: renderIcon(),
     },
     {
       id: '3',
       label: 'Access to main league',
-      icon: <CheckCircleIcon />,
+      icon: renderIcon(),
     },
   ];
   return (
@@ -29,10 +32,16 @@ export default function PageTwo() {
         What you get
       </TypographyWrapper>
 
-      <div>
+      <div className="grid grid-cols-1 mt-10">
         {featuresArray.map((feature, featureIndex) => (
-          <span key={featureIndex}>
-            {feature.icon} <p>{feature.label}</p>
+          <span key={featureIndex} className="flex flex-row">
+            {feature.icon}{' '}
+            <TypographyWrapper
+              WrapperTypes="HeadingThree"
+              additonalClassNames="text-xl"
+            >
+              {feature.label}
+            </TypographyWrapper>
           </span>
         ))}
       </div>
