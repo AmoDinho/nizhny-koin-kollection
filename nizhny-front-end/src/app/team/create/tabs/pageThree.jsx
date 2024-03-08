@@ -18,7 +18,11 @@ export default function PageOne() {
       </TypographyWrapper>
 
       <Button className="mt-5">Next</Button>
-      <Button varaint="secondary" className="mt-5">
+      <Button
+        varaint="secondary"
+        className="mt-5"
+        onClick={() => handleRouteChange(`two`, searchParams)}
+      >
         previous
       </Button>
     </div>
