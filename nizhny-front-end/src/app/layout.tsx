@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bungee.variable} ${advent.variable} bg-diamond-dark`}>
+      <body
+        className={`${bungee.variable} ${advent.variable} bg-diamond-dark mt-5 p-5`}
+      >
         {children}
       </body>
     </html>
