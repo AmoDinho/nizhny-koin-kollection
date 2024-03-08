@@ -7,7 +7,7 @@ return function
 
 import { useRouter } from 'next/navigation';
 import { createUrl } from './utils';
-export const useRouterUtil = () => {
+export default function useRouterUtil() {
   const router = useRouter();
   const handleRouteChange = (routeTarget: string, searchParams: string) => {
     const newParams = new URLSearchParams(searchParams.toString());
@@ -24,4 +24,4 @@ export const useRouterUtil = () => {
   };
 
   return { handleRouteChange };
-};
+}
