@@ -3,8 +3,11 @@ import { CheckCircleIcon } from '@heroicons/react/16/solid';
 import { TypographyWrapper } from '@/components/typography';
 import { IFeatureArray } from '@/types/types';
 import { Button } from '@/components/ui/button';
-
+import useRouterUtil from '@/lib/useRouterUtil';
+import { useSearchParams } from 'next/navigation';
 export default function PageTwo() {
+  const searchParams = useSearchParams();
+  const { handleRouteChange } = useRouterUtil();
   const renderIcon = () => (
     <CheckCircleIcon className="h-10 w-10 text-green-500" />
   );
@@ -47,9 +50,19 @@ export default function PageTwo() {
           </span>
         ))}
       </div>
-      <Button className="mt-5">Next</Button>
-      <Button varaint="secondary" className="mt-5">
+
+      <Button
+        variant="secondary"
+        className="mt-5"
+        onClick={() => handleRouteChange(`two`, searchParams)}
+      >
         previous
+      </Button>
+      <Button
+        className="mt-5"
+        onClick={() => handleRouteChange(`three`, searchParams)}
+      >
+        Next
       </Button>
     </>
   );
