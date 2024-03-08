@@ -28,6 +28,14 @@ export default function PageTwo() {
       >
         What you get
       </TypographyWrapper>
+
+      <div>
+        {featuresArray.map((feature, featureIndex) => (
+          <span key={featureIndex}>
+            {feature.icon} <p>{feature.label}</p>
+          </span>
+        ))}
+      </div>
     </>
   );
 }
