@@ -2,6 +2,8 @@
 import { CheckCircleIcon } from '@heroicons/react/16/solid';
 import { TypographyWrapper } from '@/components/typography';
 import { IFeatureArray } from '@/types/types';
+import { Button } from '@/components/ui/button';
+
 export default function PageTwo() {
   const renderIcon = () => (
     <CheckCircleIcon className="h-10 w-10 text-green-500" />
@@ -45,6 +47,10 @@ export default function PageTwo() {
           </span>
         ))}
       </div>
+      <Button className="mt-5">Next</Button>
+      <Button varaint="secondary" className="mt-5">
+        previous
+      </Button>
     </>
   );
 }
