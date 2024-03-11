@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { RecoilRoot } from 'recoil';
+import RecoilContextProvider from '@/state/RecoilContextProvider';
 import { Bungee_Shade, Advent_Pro } from 'next/font/google';
 import './globals.css';
 
@@ -26,13 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <RecoilRoot>
+      <RecoilContextProvider>
         <body
           className={`${bungee.variable} ${advent.variable} bg-diamond-dark mt-5 p-5`}
         >
           {children}
         </body>
-      </RecoilRoot>
+      </RecoilContextProvider>
     </html>
   );
 }
