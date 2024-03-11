@@ -17,17 +17,18 @@ export default function PageThree() {
 
   return (
     <div className=" ">
-      {/* <TypographyWrapper
+      <TypographyWrapper
         WrapperTypes="HeadingOne"
         additonalClassNames="text-red-600 mt-5 mb-5"
       >
         Build your team
-      </TypographyWrapper> */}
+      </TypographyWrapper>
 
       {team.length === 0 && (
         <div
           className="grid gap-6 w-20"
           style={{
+            rowGap: '1rem',
             gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
           }}
         >
