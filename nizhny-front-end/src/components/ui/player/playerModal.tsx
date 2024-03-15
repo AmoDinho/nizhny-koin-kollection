@@ -1,16 +1,20 @@
+import * as React from 'react';
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
-  export default function PlayerModal(){
+const PlayerModal: React.FunctionComponent = () => {
+  return (
+    <DialogContent>
+      <DialogHeader>Select your Players</DialogHeader>
+    </DialogContent>
+  );
+};
 
-    return (
-        <Dialog
-    )
-  }
+export { PlayerModal, DialogTrigger };

@@ -9,7 +9,12 @@ import { createTeamState } from '@/state/atom';
 import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { CheckCircleIcon } from '@heroicons/react/16/solid';
-
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
   const searchParams = useSearchParams();
@@ -32,7 +37,16 @@ export default function PageThree() {
             gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
           }}
         >
-          <ParentImage imagePath={CoinHolder} />
+          <Dialog>
+            <DialogTrigger>
+              <ParentImage imagePath={CoinHolder} />
+            </DialogTrigger>
+
+            <DialogContent>
+              <DialogHeader>Hello</DialogHeader>
+            </DialogContent>
+          </Dialog>
+
           <ParentImage imagePath={CoinHolder} />
           <ParentImage imagePath={CoinHolder} />
           <ParentImage imagePath={CoinHolder} />
