@@ -8,13 +8,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-
-const PlayerModal: React.FunctionComponent = () => {
+import CoinHolder from '@/static/images/coin.svg';
+import ParentImage from '@/components/image/parentImage';
+interface IPlayerModalProps {
+  children: React.ReactNode;
+}
+const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
   return (
-    <DialogContent>
-      <DialogHeader>Select your Players</DialogHeader>
-    </DialogContent>
+    <Dialog>
+      <DialogTrigger>
+        <ParentImage imagePath={CoinHolder} />
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>Select your Players</DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 };
 
-export { PlayerModal, DialogTrigger };
+export { PlayerModal };
