@@ -12,6 +12,7 @@ export default async function Dashboard() {
     data: { session },
   } = await supabase.auth.getSession();
 
+  console.log('session', session);
   if (!session) {
     redirect('/');
   }
