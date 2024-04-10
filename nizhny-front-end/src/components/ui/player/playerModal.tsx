@@ -33,6 +33,7 @@ const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
   useEffect(() => {
     getPlayers();
   }, []);
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -40,7 +41,13 @@ const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>Select your Players</DialogHeader>
-        <div></div>
+        <div>
+          {players?.map((player, playerIndex) => (
+            <>
+              <ParentImage imagePath={player.Row.img} />
+            </>
+          ))}
+        </div>
       </DialogContent>
     </Dialog>
   );
