@@ -11,15 +11,21 @@ import {
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
 import { getPaginatedPlayers } from '@/services/players';
+import type { Database } from '@/types/supabase';
 interface IPlayerModalProps {
   children: React.ReactNode;
 }
+
+type IPlayer = Database['public']['Tables']['Players'];
+type IPlayers = Array<IPlayer>;
 const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
+  const [players, setPlayers] = useState<IPlayers | null>(null);
   const getPlayers = async () => {
     try {
       const { Players } = await getPaginatedPlayers();
 
       console.log('Players', Players);
+      setPlayers(players);
     } catch (error) {
       alert('throw new error');
     }
@@ -34,6 +40,7 @@ const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>Select your Players</DialogHeader>
+        <div></div>
       </DialogContent>
     </Dialog>
   );
