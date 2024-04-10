@@ -15,11 +15,13 @@ import type { Database } from '@/types/supabase';
 interface IPlayerModalProps {
   children: React.ReactNode;
 }
-
-type IPlayer = Database['public']['Tables']['Players'];
+/*
+TO-DO: https://mantine.dev/guides/next/
+*/
+type IPlayer = Database['public']['Tables']['Players']['Row'];
 type IPlayers = Array<IPlayer>;
 const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
-  const [players, setPlayers] = useState<IPlayers | null>(null);
+  const [players, setPlayers] = useState<IPlayers | []>([]);
   const getPlayers = async () => {
     try {
       const { Players } = await getPaginatedPlayers();
@@ -33,6 +35,7 @@ const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
   useEffect(() => {
     getPlayers();
   }, []);
+  console.log('Players-state', players);
 
   return (
     <Dialog>
@@ -41,13 +44,15 @@ const PlayerModal = ({ children }: IPlayerModalProps): React.JSX.Element => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>Select your Players</DialogHeader>
-        <div>
+        <DialogDescription>
+          <p>hi</p>
           {players?.map((player, playerIndex) => (
             <>
-              <ParentImage imagePath={player.Row.img} />
+              <p>{player.playerName}</p>
+              <ParentImage imagePath={player.imageUrl} key={playerIndex} />
             </>
           ))}
-        </div>
+        </DialogDescription>
       </DialogContent>
     </Dialog>
   );
