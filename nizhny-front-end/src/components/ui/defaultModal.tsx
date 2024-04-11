@@ -4,11 +4,12 @@ interface IModalProps {
   isOpened: boolean;
   close: () => void;
   children: React.ReactNode;
+  size?: string;
 }
-const DefaultModal = ({ isOpened, close, children }: IModalProps) => {
+const DefaultModal = ({ isOpened, close, children, size }: IModalProps) => {
   return (
     <>
-      <Modal opened={isOpened} onClose={close}>
+      <Modal opened={isOpened} onClose={close} size={size}>
         {children}
       </Modal>
     </>

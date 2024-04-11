@@ -39,7 +39,7 @@ const PlayerModal = ({
   console.log('Players-state', players);
 
   return (
-    <DefaultModal isOpened={isOpened} close={close}>
+    <DefaultModal isOpened={isOpened} close={close} size="55%">
       <div>
         {players?.map((player, playerIndex) => (
           <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
