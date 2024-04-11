@@ -1,6 +1,8 @@
 'use client';
 
 import { TypographyWrapper } from '@/components/typography';
+import { useDisclosure } from '@mantine/hooks';
+
 import { Button } from '@/components/ui/button';
 import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
@@ -10,6 +12,7 @@ import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 export default function PageThree() {
+  const [opened, { open, close }] = useDisclosure(false);
   const team = useRecoilValue(createTeamState);
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
@@ -31,8 +34,8 @@ export default function PageThree() {
             gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
           }}
         >
-          <PlayerModal />
-          <ParentImage imagePath={CoinHolder} />
+          <PlayerModal isOpened={opened} close={close} />
+          <ParentImage imagePath={CoinHolder} onClick={open} />
           <ParentImage imagePath={CoinHolder} />
           <ParentImage imagePath={CoinHolder} />
         </div>

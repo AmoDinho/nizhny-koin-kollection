@@ -15,7 +15,6 @@ TO-DO: https://mantine.dev/guides/next/
 type IPlayer = Database['public']['Tables']['Players']['Row'];
 type IPlayers = Array<IPlayer>;
 const PlayerModal = ({
-  children,
   isOpened,
   close,
 }: IPlayerModalProps): React.JSX.Element => {
@@ -37,7 +36,7 @@ const PlayerModal = ({
 
   return (
     <DefaultModal isOpened={isOpened} close={close}>
-      Here are the players
+      Here are your players
     </DefaultModal>
   );
 };
