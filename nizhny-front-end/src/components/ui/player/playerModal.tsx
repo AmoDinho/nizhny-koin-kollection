@@ -40,7 +40,13 @@ const PlayerModal = ({
 
   return (
     <DefaultModal isOpened={isOpened} close={close} size="55%">
-      <div>
+      <div
+        className="grid"
+        style={{
+          rowGap: '1rem',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+        }}
+      >
         {players?.map((player, playerIndex) => (
           <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
         ))}
