@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import RecoilContextProvider from '@/state/RecoilContextProvider';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { Bungee_Shade, Advent_Pro } from 'next/font/google';
 import './globals.css';
+import '@mantine/core/styles.css';
 
 const bungee = Bungee_Shade({
   weight: '400',
@@ -26,11 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <RecoilContextProvider>
         <body
           className={`${bungee.variable} ${advent.variable} bg-diamond-dark mt-5 p-5`}
         >
-          {children}
+          <MantineProvider>{children}</MantineProvider>
         </body>
       </RecoilContextProvider>
     </html>
