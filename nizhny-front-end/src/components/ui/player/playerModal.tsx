@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
@@ -18,24 +18,33 @@ const PlayerModal = ({
   isOpened,
   close,
 }: IPlayerModalProps): React.JSX.Element => {
-  const [players, setPlayers] = useState<IPlayers | []>([]);
+  const [players, setPlayers] = useState<IPlayers>([]);
+  // const [players, setPlayers] = useState([]);
+
   const getPlayers = async () => {
     try {
       const { Players } = await getPaginatedPlayers();
 
       console.log('Players', Players);
-      setPlayers(players);
+
+      setPlayers(Players);
     } catch (error) {
       alert('throw new error');
     }
   };
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     getPlayers();
-  }, []);
+  }, [isOpened]);
   console.log('Players-state', players);
 
   return (
     <DefaultModal isOpened={isOpened} close={close}>
+      <div>
+        {players?.map((player, playerIndex) => (
+          <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
+        ))}
+      </div>
       Here are your players
     </DefaultModal>
   );

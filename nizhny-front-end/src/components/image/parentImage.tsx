@@ -15,6 +15,8 @@ const ParentImage = ({
     src={imagePath}
     alt="something went wrong"
     className={additionalClassNames}
+    width={500}
+    height={500}
   />
 );
 
