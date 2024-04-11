@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
-import { getPaginatedPlayers } from '@/services/players';
+import { getPaginatedPlayers, getPlayerCount } from '@/services/players';
 import type { Database } from '@/types/supabase';
 interface IPlayerModalProps {
   isOpened: boolean;
@@ -19,6 +19,8 @@ const PlayerModal = ({
   close,
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers>([]);
+  const [pages, setPages] = useState<Number>(0);
+
   // const [players, setPlayers] = useState([]);
 
   const getPlayers = async () => {
@@ -33,8 +35,14 @@ const PlayerModal = ({
     }
   };
 
+  const setPageCount = async () => {
+    const { Count } = await getPlayerCount();
+    setPages(Count);
+  };
+
   useLayoutEffect(() => {
     getPlayers();
+    setPageCount();
   }, [isOpened]);
   console.log('Players-state', players);
 
