@@ -8,7 +8,7 @@ const getPaginatedPlayers = async () => {
 const getPlayerCount = async () => {
   let { data: Count, error: CountError } = await useSupabase
     .from('Players')
-    .select('*');
+    .select('COUNT(*) as all_players');
   return { Count, CountError };
 };
 export { getPaginatedPlayers, getPlayerCount };
