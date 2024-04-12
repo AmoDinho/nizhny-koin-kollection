@@ -6,9 +6,10 @@ const getPaginatedPlayers = async () => {
 };
 
 const getPlayerCount = async () => {
-  let { data: Count, error: CountError } = await useSupabase
+  let { count, error: CountError } = await useSupabase
     .from('Players')
-    .select('COUNT(*) as all_players');
-  return { Count, CountError };
+    .select('*', { count: 'exact', head: true });
+
+  return { count, CountError };
 };
 export { getPaginatedPlayers, getPlayerCount };

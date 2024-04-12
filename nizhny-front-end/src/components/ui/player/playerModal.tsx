@@ -12,14 +12,14 @@ interface IPlayerModalProps {
 /*
 TO-DO: https://mantine.dev/guides/next/
 */
-type IPlayer = Database['public']['Tables']['Players']['Row'];
-type IPlayers = Array<IPlayer>;
+type IPlayer = Database['public']['Tables']['Players']['Row'] | null;
+type IPlayers = Array<IPlayer> | null;
 const PlayerModal = ({
   isOpened,
   close,
 }: IPlayerModalProps): React.JSX.Element => {
-  const [players, setPlayers] = useState<IPlayers>([]);
-  const [pages, setPages] = useState<Number>(0);
+  const [players, setPlayers] = useState<IPlayers | null>([]);
+  const [pages, setPages] = useState<number | null>(0);
 
   // const [players, setPlayers] = useState([]);
 
@@ -36,15 +36,15 @@ const PlayerModal = ({
   };
 
   const setPageCount = async () => {
-    const { Count } = await getPlayerCount();
-    setPages(Count);
+    const { count } = await getPlayerCount();
+    setPages(count);
   };
 
   useLayoutEffect(() => {
     getPlayers();
     setPageCount();
   }, [isOpened]);
-  console.log('Players-state', players);
+  console.log('Players-state', players, pages);
 
   return (
     <DefaultModal isOpened={isOpened} close={close} size="55%">
