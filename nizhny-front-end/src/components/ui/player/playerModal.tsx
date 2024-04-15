@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/pagination';
 import { getPaginatedPlayers, getPlayerCount } from '@/services/players';
 import type { Database } from '@/types/supabase';
+import type { IRenderLastItemsProps } from '@/types/types';
 interface IPlayerModalProps {
   isOpened: boolean;
   close: () => void;
@@ -43,7 +44,7 @@ const PlayerModal = ({
 
   const sumNumbers = (numberOne: number, numberTwo: number): number =>
     numberOne + numberTwo;
-  const getPlayers = async (currentPageNumber) => {
+  const getPlayers = async (currentPageNumber: number): Promise<void> => {
     try {
       const { from, to } = getPagination(currentPageNumber, pageSize);
       const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
@@ -57,7 +58,7 @@ const PlayerModal = ({
     }
   };
 
-  const setPageCount = async () => {
+  const setPageCount = async (): Promise<void> => {
     const { count } = await getPlayerCount();
     setPages(count / 2);
   };
@@ -67,6 +68,25 @@ const PlayerModal = ({
     setPageCount();
   }, [isOpened]);
   console.log('Players-state', players, pages);
+
+  const RenderLastItems = ({ itemType }: IRenderLastItemsProps) => {
+    console.log('itemType', itemType);
+    const componentRegistry = {
+      next: () => (
+        <PaginationNext onClick={() => getPlayers(currentPage + 1)} />
+      ),
+      previous: () => (
+        <PaginationPrevious onClick={() => getPlayers(currentPage - 1)} />
+      ),
+    };
+
+    const TargetComponent = componentRegistry[`${itemType}`];
+    return (
+      <PaginationItem>
+        <TargetComponent />
+      </PaginationItem>
+    );
+  };
 
   return (
     <DefaultModal isOpened={isOpened} close={close} size="55%">
@@ -82,13 +102,19 @@ const PlayerModal = ({
         ))}
       </div>
       <Pagination>
+        <RenderLastItems itemType="previous" />
         <PaginationContent>
+          {/* render the amount of buttons based on the data fromt he db*/}
           {Array(pages)
             .fill('')
             .map((pageNumber, pageIndex) => (
               <PaginationItem key={pageIndex}>
+                <p className="text-black"></p>
                 <PaginationLink
                   className="bg-black text-white"
+                  isActive={
+                    currentPage === sumNumbers(pageIndex, 1) ? true : false
+                  }
                   onClick={() => getPlayers(sumNumbers(pageIndex, 1))}
                 >
                   {sumNumbers(pageIndex, 1)}
@@ -96,6 +122,7 @@ const PlayerModal = ({
               </PaginationItem>
             ))}
         </PaginationContent>
+        <RenderLastItems itemType="next" />
       </Pagination>
     </DefaultModal>
   );

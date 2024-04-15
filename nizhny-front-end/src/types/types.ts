@@ -11,3 +11,7 @@ export type IGetPaginatedPlayers = {
   to: number;
   limit: number;
 };
+
+export type IRenderLastItemsProps = {
+  itemType: string;
+};
