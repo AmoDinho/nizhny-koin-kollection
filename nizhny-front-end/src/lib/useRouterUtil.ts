@@ -18,7 +18,9 @@ export default function useRouterUtil() {
 
     if (routeTarget) {
       newParams.set(stateAction, routeTarget);
+      console.log('xx-1');
     } else {
+      console.log('xx-2');
       newParams.delete(stateAction);
     }
 

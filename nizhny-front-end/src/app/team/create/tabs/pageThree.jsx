@@ -16,9 +16,14 @@ export default function PageThree() {
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
 
-  useEffect(() => {
-    handleRouteChange(`modalOpen`, searchParams, 'modalState');
-  }, [opened]);
+  // useEffect(() => {
+  //   console.log('opened', opened);
+  //   opened
+  //     ? handleRouteChange(`modalOpen`, searchParams, 'modalState')
+  //     : handleRouteChange(searchParams, 'modalState');
+  //   // handleRouteChange(`modalOpen`, searchParams, 'modalState');
+  // }, [opened]);
+
   return (
     <div className=" ">
       <TypographyWrapper
