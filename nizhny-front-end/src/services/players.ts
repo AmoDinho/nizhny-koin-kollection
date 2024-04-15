@@ -1,5 +1,5 @@
 import { useSupabase } from '@/lib/useSupabase';
-import type { IGetPaginatedPlayers } from '@/types';
+import type { IGetPaginatedPlayers } from '@/types/types';
 const getPaginatedPlayers = async ({
   from,
   to,

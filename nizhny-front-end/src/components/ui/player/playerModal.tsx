@@ -29,7 +29,7 @@ const PlayerModal = ({
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers | null>([]);
   const [pages, setPages] = useState<number | null>(0);
-  const [currentPage, setCurrentPage] = useState<number | null>(0);
+  const [currentPage, setCurrentPage] = useState<number | null>(1);
   let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
@@ -40,12 +40,17 @@ const PlayerModal = ({
 
     return { from, to };
   };
-  const getPlayers = async () => {
+
+  const sumNumbers = (numberOne: number, numberTwo: number): number =>
+    numberOne + numberTwo;
+  const getPlayers = async (currentPageNumber) => {
     try {
-      const { Players } = await getPaginatedPlayers();
+      const { from, to } = getPagination(currentPageNumber, pageSize);
+      const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
 
       console.log('Players', Players);
 
+      setCurrentPage(currentPageNumber);
       setPlayers(Players);
     } catch (error) {
       alert('throw new error');
@@ -58,7 +63,7 @@ const PlayerModal = ({
   };
 
   useLayoutEffect(() => {
-    getPlayers();
+    getPlayers(currentPage);
     setPageCount();
   }, [isOpened]);
   console.log('Players-state', players, pages);
@@ -82,8 +87,11 @@ const PlayerModal = ({
             .fill('')
             .map((pageNumber, pageIndex) => (
               <PaginationItem key={pageIndex}>
-                <PaginationLink className="bg-black text-white">
-                  {pageIndex + 1}
+                <PaginationLink
+                  className="bg-black text-white"
+                  onClick={() => getPlayers(sumNumbers(pageIndex, 1))}
+                >
+                  {sumNumbers(pageIndex, 1)}
                 </PaginationLink>
               </PaginationItem>
             ))}
