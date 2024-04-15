@@ -75,7 +75,9 @@ const PlayerModal = ({
             .fill('')
             .map((pageNumber, pageIndex) => (
               <PaginationItem key={pageIndex}>
-                <PaginationLink>{pageNumber}</PaginationLink>
+                <PaginationLink className="bg-black text-white">
+                  {pageIndex + 1}
+                </PaginationLink>
               </PaginationItem>
             ))}
         </PaginationContent>
