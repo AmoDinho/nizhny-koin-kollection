@@ -22,7 +22,7 @@ export default function PageOne() {
 
       <Button
         className="mt-5"
-        onClick={() => handleRouteChange(`two`, searchParams)}
+        onClick={() => handleRouteChange(`two`, searchParams, 'tabState')}
       >
         Next
       </Button>

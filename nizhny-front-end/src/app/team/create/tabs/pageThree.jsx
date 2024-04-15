@@ -1,8 +1,7 @@
 'use client';
-
+import { useEffect } from 'react';
 import { TypographyWrapper } from '@/components/typography';
 import { useDisclosure } from '@mantine/hooks';
-
 import { Button } from '@/components/ui/button';
 import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
@@ -17,6 +16,9 @@ export default function PageThree() {
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
 
+  useEffect(() => {
+    handleRouteChange(`modalOpen`, searchParams, 'modalState');
+  }, [opened]);
   return (
     <div className=" ">
       <TypographyWrapper
@@ -58,7 +60,7 @@ export default function PageThree() {
         <Button
           varaint="secondary"
           className="mt-5"
-          onClick={() => handleRouteChange(`two`, searchParams)}
+          onClick={() => handleRouteChange(`two`, searchParams, 'tabState')}
         >
           previous
         </Button>
