@@ -120,19 +120,6 @@ export default function Login() {
           <Button onClick={() => router.push('/auth/login')}>Log In</Button>
         </form>
       </Form>
-      {/* <input
-          name="email"
-          onChange={(e) =>
-            handleFormChange({ key: 'email', value: e.currentTarget.value })
-          }
-        />
-        <input
-          name="password"
-          onChange={(e) =>
-            handleFormChange({ key: 'password', value: e.currentTarget.value })
-          }
-        />
-        <button onClick={handleSignIn}>Sign In</button> */}
     </div>
   );
 }

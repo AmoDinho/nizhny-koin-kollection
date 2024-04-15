@@ -2,6 +2,15 @@ import React, { useState, useLayoutEffect } from 'react';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 import { getPaginatedPlayers, getPlayerCount } from '@/services/players';
 import type { Database } from '@/types/supabase';
 interface IPlayerModalProps {
@@ -20,7 +29,8 @@ const PlayerModal = ({
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers | null>([]);
   const [pages, setPages] = useState<number | null>(0);
-
+  const [currentPage, setCurrentPage] = useState<number | null>(0);
+  let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
   const getPlayers = async () => {
@@ -37,7 +47,7 @@ const PlayerModal = ({
 
   const setPageCount = async () => {
     const { count } = await getPlayerCount();
-    setPages(count);
+    setPages(count / 2);
   };
 
   useLayoutEffect(() => {
@@ -59,7 +69,17 @@ const PlayerModal = ({
           <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
         ))}
       </div>
-      Here are your players
+      <Pagination>
+        <PaginationContent>
+          {Array(pages)
+            .fill('')
+            .map((pageNumber, pageIndex) => (
+              <PaginationItem key={pageIndex}>
+                <PaginationLink>{pageNumber}</PaginationLink>
+              </PaginationItem>
+            ))}
+        </PaginationContent>
+      </Pagination>
     </DefaultModal>
   );
 };
