@@ -20,7 +20,10 @@ interface IPlayerModalProps {
   children: React.ReactNode;
 }
 /*
-TO-DO: https://mantine.dev/guides/next/
+TO-DO:
+
+1. sort out active state of pagination
+2. sort out typing
 */
 type IPlayer = Database['public']['Tables']['Players']['Row'] | null;
 type IPlayers = Array<IPlayer> | null;
