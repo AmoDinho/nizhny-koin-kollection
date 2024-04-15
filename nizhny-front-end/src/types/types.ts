@@ -6,3 +6,8 @@ type IFeatures = {
 };
 
 export type IFeatureArray = IFeatures[];
+export type IGetPaginatedPlayers = {
+  from: number;
+  to: number;
+  limit: number;
+};
