@@ -33,6 +33,13 @@ const PlayerModal = ({
   let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
+  const getPagination = (page, size) => {
+    const limit = size ? +size : 2;
+    const from = page ? page * limit : 0;
+    const to = page ? from + size : size;
+
+    return { from, to };
+  };
   const getPlayers = async () => {
     try {
       const { Players } = await getPaginatedPlayers();
