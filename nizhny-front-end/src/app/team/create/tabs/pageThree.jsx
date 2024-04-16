@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect } from 'react';
+import { XCircleIcon } from '@heroicons/react/16/solid';
 import { TypographyWrapper } from '@/components/typography';
 import { useDisclosure } from '@mantine/hooks';
 import { Button } from '@/components/ui/button';
@@ -31,6 +32,10 @@ export default function PageThree() {
 4. render empty koins
   */
 
+  useEffect(() => {
+    console.log('team', team);
+  }, []);
+
   const DetermineKoinsToRender = ({ usersTeams }) => {
     let localKoins = 0;
     const maxTeamSize = 5;
@@ -49,7 +54,10 @@ export default function PageThree() {
         }}
       >
         {usersTeams?.map((player, playerIndex) => (
-          <ParentImage imagePath={player.imageUrl} key={playerIndex} />
+          <div key={playerIndex}>
+            <XCircleIcon className="h-10 w-10" />
+            <ParentImage imagePath={player.imageUrl} />
+          </div>
         ))}
         <PlayerModal isOpened={opened} close={close} />
         {Array(localKoins)
