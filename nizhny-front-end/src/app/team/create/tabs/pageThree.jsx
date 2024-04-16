@@ -6,16 +6,27 @@ import { useDisclosure } from '@mantine/hooks';
 import { Button } from '@/components/ui/button';
 import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { createTeamState } from '@/state/atom';
 import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
+  const setTeamState = useSetRecoilState(createTeamState);
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
   const [opened, { open, close }] = useDisclosure(false);
+
+  const removePlayerFromTeam = ({ playerID }) => {
+    let cloneTeamState = [...team];
+
+    const updatedTeamState = cloneTeamState.filter(
+      (player) => player.playerID !== playerID
+    );
+    console.log('updatedTeamState', updatedTeamState, playerID);
+    setTeamState(updatedTeamState);
+  };
   // useEffect(() => {
   //   console.log('opened', opened);
   //   opened
@@ -34,7 +45,7 @@ export default function PageThree() {
 
   useEffect(() => {
     console.log('team', team);
-  }, []);
+  }, [team]);
 
   const DetermineKoinsToRender = ({ usersTeams }) => {
     let localKoins = 0;
@@ -55,7 +66,12 @@ export default function PageThree() {
       >
         {usersTeams?.map((player, playerIndex) => (
           <div key={playerIndex}>
-            <XCircleIcon className="h-10 w-10" />
+            <XCircleIcon
+              className="h-10 w-10"
+              onClick={() =>
+                removePlayerFromTeam({ playerID: player.playerID })
+              }
+            />
             <ParentImage imagePath={player.imageUrl} />
           </div>
         ))}
