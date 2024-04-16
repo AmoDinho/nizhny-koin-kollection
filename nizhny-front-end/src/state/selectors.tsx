@@ -1,9 +1,12 @@
-import { selector } from 'recoil';
-import { createTeamState } from './atom';
+// import { DefaultValue, selector } from 'recoil';
+// import { createTeamState } from './atom';
+// import type { Database } from '@/types/supabase';
 
-const createTeamMutation = selector({
-  key: 'createTeamState',
-  set: ({ set }, newValue) => set(createTeamState, newValue),
-});
+// type IPlayer = Database['public']['Tables']['Players']['Row'];
+// const createTeamMutation = selector({
+//   key: 'createTeamState',
+//   get: () => '',
+//   set: ({ set }, newValue) => set(createTeamState, newValue instanceof DefaultValue ? newValue : createTeamState.push(newValue),
+// });
 
-export { createTeamMutation };
+// export { createTeamMutation };
