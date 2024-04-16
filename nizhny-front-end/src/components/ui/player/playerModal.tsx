@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
@@ -14,6 +15,7 @@ import {
 import { getPaginatedPlayers, getPlayerCount } from '@/services/players';
 import type { Database } from '@/types/supabase';
 import type { IRenderLastItemsProps } from '@/types/types';
+import { createTeamState } from '@/state/atom';
 interface IPlayerModalProps {
   isOpened: boolean;
   close: () => void;
@@ -34,6 +36,7 @@ const PlayerModal = ({
   const [players, setPlayers] = useState<IPlayers | null>([]);
   const [pages, setPages] = useState<number | null>(0);
   const [currentPage, setCurrentPage] = useState<number | null>(1);
+  const setTeamState = useSetRecoilState(createTeamState);
   let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
@@ -93,6 +96,9 @@ const PlayerModal = ({
     );
   };
 
+  const addPlayerToTeam = (player) => {
+    setTeamState((players) => [...players, player]);
+  };
   return (
     <DefaultModal isOpened={isOpened} close={close} size="55%">
       <div
@@ -103,7 +109,11 @@ const PlayerModal = ({
         }}
       >
         {players?.map((player, playerIndex) => (
-          <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
+          <ParentImage
+            imagePath={player?.imageUrl}
+            key={playerIndex}
+            onClick={() => addPlayerToTeam(player)}
+          />
         ))}
       </div>
       <Pagination>
