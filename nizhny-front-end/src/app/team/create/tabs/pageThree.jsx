@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { TypographyWrapper } from '@/components/typography';
 import { useDisclosure } from '@mantine/hooks';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ export default function PageThree() {
   const team = useRecoilValue(createTeamState);
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
-
+  const [opened, { open, close }] = useDisclosure(false);
   // useEffect(() => {
   //   console.log('opened', opened);
   //   opened
@@ -32,12 +32,12 @@ export default function PageThree() {
   */
 
   const DetermineKoinsToRender = ({ usersTeams }) => {
-    let emptyKoins = 0;
+    let localKoins = 0;
     const maxTeamSize = 5;
     let currentTeamSize = usersTeams.length;
 
     if (currentTeamSize < maxTeamSize) {
-      emptyKoins = maxTeamSize - currentTeamSize;
+      localKoins = maxTeamSize - currentTeamSize;
     }
 
     return (
@@ -51,14 +51,12 @@ export default function PageThree() {
         {usersTeams?.map((player, playerIndex) => (
           <ParentImage imagePath={player.imageUrl} key={playerIndex} />
         ))}
-
-        {Array(emptyKoins)
+        <PlayerModal isOpened={opened} close={close} />
+        {Array(localKoins)
           .fill('')
           .map((arrayItem, arrayIndex) => {
-            const [opened, { open, close }] = useDisclosure(false);
             return (
               <div key={arrayIndex}>
-                <PlayerModal isOpened={opened} close={close} />
                 <ParentImage imagePath={CoinHolder} onClick={open} />
               </div>
             );
@@ -91,3 +89,46 @@ export default function PageThree() {
     </div>
   );
 }
+
+/*
+
+const DetermineKoinsToRender = ({ usersTeams }) => {
+      const [emptyKoins, setEmptyKoins] = useState(0);
+      const [opened, { open, close }] = useDisclosure(false);
+      useEffect(() => {
+        let localKoins = 0;
+        const maxTeamSize = 5;
+        let currentTeamSize = usersTeams.length;
+
+        if (currentTeamSize < maxTeamSize) {
+          localKoins = maxTeamSize - currentTeamSize;
+        }
+
+        setEmptyKoins(localKoins);
+      }, []);
+
+      return (
+        <div
+          className="grid gap-6 w-20"
+          style={{
+            rowGap: '1rem',
+            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          }}
+        >
+          {usersTeams?.map((player, playerIndex) => (
+            <ParentImage imagePath={player.imageUrl} key={playerIndex} />
+          ))}
+          <PlayerModal isOpened={opened} close={close} />
+          {Array(emptyKoins)
+            .fill('')
+            .map((arrayItem, arrayIndex) => {
+              return (
+                <div key={arrayIndex}>
+                  <ParentImage imagePath={CoinHolder} onClick={open} />
+                </div>
+              );
+            })}
+        </div>
+      );
+
+*/

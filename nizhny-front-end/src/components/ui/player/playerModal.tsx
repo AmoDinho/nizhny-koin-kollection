@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
@@ -52,8 +52,7 @@ const PlayerModal = ({
       const { from, to } = getPagination(currentPageNumber, pageSize);
       const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
 
-      console.log('Players', Players);
-
+      // console.log('Players', Players, source);
       setCurrentPage(currentPageNumber);
       setPlayers(Players);
     } catch (error) {
@@ -66,11 +65,14 @@ const PlayerModal = ({
     setPages(count / 2);
   };
 
-  useLayoutEffect(() => {
-    getPlayers(currentPage);
-    setPageCount();
+  useEffect(() => {
+    if (isOpened) {
+      getPlayers(currentPage);
+      console.log('useeffect');
+      setPageCount();
+    }
   }, [isOpened]);
-  console.log('Players-state', players, pages);
+  console.log('Players-state', players, pages, isOpened);
 
   const RenderLastItems = ({ itemType }: IRenderLastItemsProps) => {
     console.log('itemType', itemType);
