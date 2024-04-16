@@ -24,6 +24,48 @@ export default function PageThree() {
   //   // handleRouteChange(`modalOpen`, searchParams, 'modalState');
   // }, [opened]);
 
+  /*
+
+1. get users team
+2. deteemine how many empty koins to render
+3.render existing players
+4. render empty koins
+  */
+
+  const DetermineKoinsToRender = ({ usersTeams }) => {
+    let emptyKoins = 0;
+    const maxTeamSize = 5;
+    let currentTeamSize = usersTeams.length;
+
+    if (currentTeamSize < maxTeamSize) {
+      emptyKoins = maxTeamSize - currentTeamSize;
+    }
+
+    console.log('usersTeams', usersTeams);
+    return (
+      <div
+        className="grid gap-6 w-20"
+        style={{
+          rowGap: '1rem',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+        }}
+      >
+        {usersTeams?.map((player, playerIndex) => (
+          <ParentImage imagePath={player.imageUrl} key={playerIndex} />
+        ))}
+
+        {Array(emptyKoins)
+          .fill('')
+          .map((arrayItem, arrayIndex) => (
+            <div key={arrayIndex}>
+              <PlayerModal isOpened={opened} close={close} />
+              <ParentImage imagePath={CoinHolder} onClick={open} />
+            </div>
+          ))}
+      </div>
+    );
+  };
+
   return (
     <div className=" ">
       <TypographyWrapper
@@ -33,7 +75,8 @@ export default function PageThree() {
         Build your team
       </TypographyWrapper>
 
-      {team.length === 0 && (
+      <DetermineKoinsToRender usersTeams={team} />
+      {/* {team.length === 0 && (
         <div
           className="grid gap-6 w-20"
           style={{
@@ -46,8 +89,8 @@ export default function PageThree() {
           <ParentImage imagePath={CoinHolder} />
           <ParentImage imagePath={CoinHolder} />
         </div>
-      )}
-      <div className="bg-white rounded-lg  ">
+      )} */}
+      {/* <div className="bg-white rounded-lg  ">
         {team.length >= 1 &&
           team.map((players, playerIndex) => (
             <>
@@ -58,7 +101,7 @@ export default function PageThree() {
               )}
             </>
           ))}
-      </div>
+      </div> */}
 
       <span>
         <Button className="mt-5">Next</Button>
