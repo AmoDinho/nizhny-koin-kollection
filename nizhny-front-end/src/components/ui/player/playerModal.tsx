@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
 import ParentImage from '@/components/image/parentImage';
@@ -37,6 +37,8 @@ const PlayerModal = ({
   const [pages, setPages] = useState<number | null>(0);
   const [currentPage, setCurrentPage] = useState<number | null>(1);
   const setTeamState = useSetRecoilState(createTeamState);
+  const team = useRecoilValue(createTeamState);
+
   let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
@@ -97,7 +99,17 @@ const PlayerModal = ({
   };
 
   const addPlayerToTeam = (player) => {
-    setTeamState((players) => [...players, player]);
+    const targetPlayerID = player?.playerID;
+    const exitingPlayer = team?.filter(
+      (player) => player?.playerID === targetPlayerID
+    );
+    console.log('exitingPlayer', exitingPlayer, targetPlayerID);
+
+    if (exitingPlayer[0]?.playerID === targetPlayerID) {
+      alert('You cannot add the same player twice');
+    } else {
+      setTeamState((players) => [...players, player]);
+    }
   };
   return (
     <DefaultModal isOpened={isOpened} close={close} size="55%">
