@@ -11,7 +11,6 @@ import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 export default function PageThree() {
-  const [opened, { open, close }] = useDisclosure(false);
   const team = useRecoilValue(createTeamState);
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
@@ -41,7 +40,6 @@ export default function PageThree() {
       emptyKoins = maxTeamSize - currentTeamSize;
     }
 
-    console.log('usersTeams', usersTeams);
     return (
       <div
         className="grid gap-6 w-20"
@@ -56,12 +54,15 @@ export default function PageThree() {
 
         {Array(emptyKoins)
           .fill('')
-          .map((arrayItem, arrayIndex) => (
-            <div key={arrayIndex}>
-              <PlayerModal isOpened={opened} close={close} />
-              <ParentImage imagePath={CoinHolder} onClick={open} />
-            </div>
-          ))}
+          .map((arrayItem, arrayIndex) => {
+            const [opened, { open, close }] = useDisclosure(false);
+            return (
+              <div key={arrayIndex}>
+                <PlayerModal isOpened={opened} close={close} />
+                <ParentImage imagePath={CoinHolder} onClick={open} />
+              </div>
+            );
+          })}
       </div>
     );
   };
@@ -76,32 +77,6 @@ export default function PageThree() {
       </TypographyWrapper>
 
       <DetermineKoinsToRender usersTeams={team} />
-      {/* {team.length === 0 && (
-        <div
-          className="grid gap-6 w-20"
-          style={{
-            rowGap: '1rem',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-          }}
-        >
-          <PlayerModal isOpened={opened} close={close} />
-          <ParentImage imagePath={CoinHolder} onClick={open} />
-          <ParentImage imagePath={CoinHolder} />
-          <ParentImage imagePath={CoinHolder} />
-        </div>
-      )} */}
-      {/* <div className="bg-white rounded-lg  ">
-        {team.length >= 1 &&
-          team.map((players, playerIndex) => (
-            <>
-              {players.Insert.teamID === null ? (
-                <ParentImage imagePath={CoinHolder} />
-              ) : (
-                <p>Here is your player</p>
-              )}
-            </>
-          ))}
-      </div> */}
 
       <span>
         <Button className="mt-5">Next</Button>

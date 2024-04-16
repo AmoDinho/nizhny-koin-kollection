@@ -9,7 +9,14 @@ interface IModalProps {
 const DefaultModal = ({ isOpened, close, children, size }: IModalProps) => {
   return (
     <>
-      <Modal opened={isOpened} onClose={close} size={size}>
+      <Modal
+        opened={isOpened}
+        onClose={close}
+        size={size}
+        styles={{
+          overlay: { background: 'none' },
+        }}
+      >
         {children}
       </Modal>
     </>
