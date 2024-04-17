@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Database } from './supabase';
 type IFeatures = {
   id: string;
   label: string;
@@ -15,3 +16,11 @@ export type IGetPaginatedPlayers = {
 export type IRenderLastItemsProps = {
   itemType: string;
 };
+
+export type ICreateTeamResponse = {
+  status: number;
+  statusText: string;
+};
+
+export type ICreateTeamProps =
+  Database['public']['Tables']['UserTeams']['Insert'];
