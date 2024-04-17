@@ -18,7 +18,12 @@ export default function PageOne() {
         What is your Team name?
       </TypographyWrapper>
 
-      <Input placeholder="Argentina FC" />
+      <Input
+        placeholder="Argentina FC"
+        onBlur={(e) => {
+          handleRouteChange(e.currentTarget.value, searchParams, 'teamName');
+        }}
+      />
 
       <Button
         className="mt-5"
