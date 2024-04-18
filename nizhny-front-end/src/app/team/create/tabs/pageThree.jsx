@@ -7,12 +7,15 @@ import { Button } from '@/components/ui/button';
 import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { createTeamState } from '@/state/atom';
+import { createTeamState, userSession } from '@/state/atom';
 import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
+import { createUserTeam } from '@/services/userTeams';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
+  const user = useRecoilValue(userSession);
+
   const setTeamState = useSetRecoilState(createTeamState);
   const searchParams = useSearchParams();
   const { handleRouteChange } = useRouterUtil();
@@ -36,15 +39,18 @@ export default function PageThree() {
 3. get the player IDs that the user selected
 4. insert the players into the players_userteams table
     */
+
+    const userID = user.user.id;
+
+    const userTeamName = searchParams.get('teamName');
+
+    try {
+      await createUserTeam({ userID, userTeamName });
+    } catch (e) {
+      alert(e);
+    }
+    const playerIDs = team.map((player) => player.playerID);
   };
-
-  /*
-
-1. get users team
-2. deteemine how many empty koins to render
-3.render existing players
-4. render empty koins
-  */
 
   useEffect(() => {
     console.log('team', team);
@@ -104,7 +110,9 @@ export default function PageThree() {
       <DetermineKoinsToRender usersTeams={team} />
 
       <span>
-        <Button className="mt-5">Next</Button>
+        <Button className="mt-5" onClick={() => createUsersTeam()}>
+          Next
+        </Button>
         <Button
           varaint="secondary"
           className="mt-5"
