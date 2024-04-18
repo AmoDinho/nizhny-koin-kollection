@@ -14,6 +14,7 @@ import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 import { createUserTeam } from '@/services/userTeams';
 import { addPlayersUserTeam } from '@/services/playersUserTeams';
+import type { ITeam, IUserTeam } from '@/types/types';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
   const user = useRecoilValue(cookieUserSession);
@@ -23,17 +24,20 @@ export default function PageThree() {
   const { handleRouteChange } = useRouterUtil();
   const [opened, { open, close }] = useDisclosure(false);
 
-  const removePlayerFromTeam = ({ playerID }) => {
+  type IRemovePlayerProps = {
+    playerID: Number;
+  };
+  const removePlayerFromTeam = ({ playerID }: IRemovePlayerProps) => {
     let cloneTeamState = [...team];
 
     const updatedTeamState = cloneTeamState.filter(
       (player) => player.playerID !== playerID
     );
-    console.log('updatedTeamState', updatedTeamState, playerID);
+    // console.log('updatedTeamState', updatedTeamState, playerID);
     setTeamState(updatedTeamState);
   };
 
-  const createUsersTeam = async () => {
+  const createUsersTeam = async (): Promise<void> => {
     /*
 
 1. get the users ID
@@ -42,37 +46,41 @@ export default function PageThree() {
 4. insert the players into the players_userteams table
     */
 
-    const userID = user.user.id;
+    const userID: string = user?.user.id || '';
 
-    console.log('user', user);
+    // console.log('user', user);
     const userTeamName = searchParams.get('teamName');
 
-    let userTeamID = '';
+    let userTeamID: number = 0;
     try {
       const { data, error } = await createUserTeam({ userID, userTeamName });
-      console.log('data', data[0]);
+      // console.log('data', data[0]);
       userTeamID = data[0].userTeamID;
     } catch (error) {
       alert(error);
     }
     const playerIDs = team.map((player) => player.playerID);
-    console.log('userTeamID', userTeamID);
+    // console.log('userTeamID', userTeamID);
 
     try {
       await addPlayersUserTeam({
         players: playerIDs,
         userTeamID: userTeamID,
       });
+      //add notification
+      // route the user to the dashboard
     } catch (error) {
       alert(error);
     }
   };
 
-  useEffect(() => {
-    console.log('team', team);
-  }, [team]);
+  // useEffect(() => {
+  //   console.log('team', team);
+  // }, [team]);
 
-  const DetermineKoinsToRender = ({ usersTeams }) => {
+  const DetermineKoinsToRender: React.FC<ITeam> = ({
+    usersTeams,
+  }): React.JSX.Element => {
     let localKoins = 0;
     const maxTeamSize = 5;
     let currentTeamSize = usersTeams.length;
@@ -130,7 +138,7 @@ export default function PageThree() {
           Next
         </Button>
         <Button
-          varaint="secondary"
+          variant="secondary"
           className="mt-5"
           onClick={() => handleRouteChange(`two`, searchParams, 'tabState')}
         >

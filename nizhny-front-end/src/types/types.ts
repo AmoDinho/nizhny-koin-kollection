@@ -17,11 +17,6 @@ export type IRenderLastItemsProps = {
   itemType: string;
 };
 
-type ICreateTeamSuccessResponse = {
-  status: number;
-  statusText: string;
-};
-
 type IGenericResponse = {
   status: number;
   statusText: string;
@@ -31,6 +26,21 @@ export type IGenericResponseParent = {
   error: IGenericResponse;
 };
 
+interface ICreateUserTeamPayload {
+  data: Array<Database['public']['Tables']['UserTeams']['Insert']>;
+  status: number;
+  statusText: string;
+}
+export type IUserTeam = Array<
+  Database['public']['Tables']['UserTeams']['Insert']
+>;
+export type ICreateUserTeamResponse = {
+  data: ICreateUserTeamPayload;
+  error: IGenericResponse;
+};
+export interface ITeam {
+  usersTeams: Array<Database['public']['Tables']['Players']['Row']>;
+}
 export type ICreateTeamProps =
   Database['public']['Tables']['UserTeams']['Insert'];
 

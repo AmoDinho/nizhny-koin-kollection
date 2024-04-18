@@ -19,7 +19,6 @@ import { createTeamState } from '@/state/atom';
 interface IPlayerModalProps {
   isOpened: boolean;
   close: () => void;
-  children: React.ReactNode;
 }
 /*
 TO-DO:
@@ -133,7 +132,7 @@ const PlayerModal = ({
         <PaginationContent>
           {/* render the amount of buttons based on the data fromt he db*/}
           {Array(pages)
-            .fill('')
+            .fill(0)
             .map((pageNumber, pageIndex) => (
               <PaginationItem key={pageIndex}>
                 <p className="text-black"></p>

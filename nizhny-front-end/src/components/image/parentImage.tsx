@@ -1,6 +1,6 @@
 import Image from 'next/image';
 interface ImageProps {
-  imagePath: string;
+  imagePath: string | null;
   additionalClassNames?: string;
   onClick?: () => void;
   width?: Number;
