@@ -1,16 +1,13 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+'use client';
 import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
+import { useRecoilValue } from 'recoil';
 import Link from 'next/link';
 import type { Database } from '@/types/supabase';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
-export default async function Dashboard() {
-  const supabase = createServerComponentClient<Database>({ cookies });
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+import { userSession } from '@/state/atom';
+export default function Dashboard() {
+  const session = useRecoilValue(userSession);
 
   console.log('session', JSON.stringify(session));
   if (!session) {
