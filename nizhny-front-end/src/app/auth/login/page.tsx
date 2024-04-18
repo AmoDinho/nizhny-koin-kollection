@@ -2,7 +2,8 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { userSession } from '@/state/atom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,22 +21,10 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 import { TypographyWrapper } from '@/components/typography';
-// type TFormData = {
-//   email: string;
-//   password: string;
-// };
 
-// type TFormPayload = {
-//   key: string;
-//   value: string;
-// };
-
-type IKeyFieldsType = 'email' | 'password';
 export default function Login() {
-  // const [formState, setFormState] = useState<TFormData>({
-  //   email: '',
-  //   password: '',
-  // });
+  const setUserSession = useSetRecoilState(userSession);
+
   const formSchema = z.object({
     email: z
       .string()
@@ -73,6 +62,11 @@ export default function Login() {
         email: values.email,
         password: values.password,
       });
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      setUserSession(session);
       router.refresh();
       router.push('/team/dashboard');
     } catch (e) {
