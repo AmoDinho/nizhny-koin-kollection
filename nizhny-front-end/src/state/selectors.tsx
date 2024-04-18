@@ -1,6 +1,7 @@
-// import { DefaultValue, selector } from 'recoil';
-// import { createTeamState } from './atom';
-// import type { Database } from '@/types/supabase';
+import { selector } from 'recoil';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
+import type { Database } from '@/types/supabase';
 
 // type IPlayer = Database['public']['Tables']['Players']['Row'];
 // const createTeamMutation = selector({
@@ -10,3 +11,17 @@
 // });
 
 // export { createTeamMutation };
+const supabase = createClientComponentClient<Database>();
+
+const cookieUserSession = selector({
+  key: 'cookieUserSession',
+  get: async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    return session;
+  },
+});
+
+export { cookieUserSession };
