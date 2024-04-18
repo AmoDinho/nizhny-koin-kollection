@@ -10,19 +10,21 @@ const addPlayersUserTeam = async ({
 }: ICreatePlayerUserTeamsProps): IGenericResponseParent => {
   const createPayload = (): Array<{}> => {
     let finalPlayerArray: [] = [];
+    console.log('players', players);
 
     players.map((player) =>
       finalPlayerArray.push({
         userTeamID: userTeamID,
-        playerID: player.playerID,
+        playerID: player,
       })
     );
 
+    console.log('finalPlayerArray', finalPlayerArray);
     return finalPlayerArray;
   };
 
   let { data, error } = await useSupabase
-    .from('UserTeams')
+    .from('Players_UserTeams')
     .insert(createPayload())
     .select();
 

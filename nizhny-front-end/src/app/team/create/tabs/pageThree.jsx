@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { createTeamState, userSession } from '@/state/atom';
+import { createTeamState } from '@/state/atom';
+import { cookieUserSession } from '@/state/selectors';
 import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
@@ -15,7 +16,7 @@ import { createUserTeam } from '@/services/userTeams';
 import { addPlayersUserTeam } from '@/services/playersUserTeams';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
-  const user = useRecoilValue(userSession);
+  const user = useRecoilValue(cookieUserSession);
 
   const setTeamState = useSetRecoilState(createTeamState);
   const searchParams = useSearchParams();
@@ -46,17 +47,21 @@ export default function PageThree() {
     console.log('user', user);
     const userTeamName = searchParams.get('teamName');
 
+    let userTeamID = '';
     try {
       const { data, error } = await createUserTeam({ userID, userTeamName });
+      console.log('data', data[0]);
+      userTeamID = data[0].userTeamID;
     } catch (error) {
       alert(error);
     }
     const playerIDs = team.map((player) => player.playerID);
+    console.log('userTeamID', userTeamID);
 
     try {
       await addPlayersUserTeam({
         players: playerIDs,
-        userTeamName: data.userTeamID,
+        userTeamID: userTeamID,
       });
     } catch (error) {
       alert(error);
