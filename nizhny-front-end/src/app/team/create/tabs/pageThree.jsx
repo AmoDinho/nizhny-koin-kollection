@@ -12,6 +12,7 @@ import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 import { createUserTeam } from '@/services/userTeams';
+import { addPlayersUserTeam } from '@/services/playersUserTeams';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
   const user = useRecoilValue(userSession);
@@ -42,14 +43,24 @@ export default function PageThree() {
 
     const userID = user.user.id;
 
+    console.log('user', user);
     const userTeamName = searchParams.get('teamName');
 
     try {
-      await createUserTeam({ userID, userTeamName });
-    } catch (e) {
-      alert(e);
+      const { data, error } = await createUserTeam({ userID, userTeamName });
+    } catch (error) {
+      alert(error);
     }
     const playerIDs = team.map((player) => player.playerID);
+
+    try {
+      await addPlayersUserTeam({
+        players: playerIDs,
+        userTeamName: data.userTeamID,
+      });
+    } catch (error) {
+      alert(error);
+    }
   };
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import type {
   ICreatePlayerUserTeamsProps,
 } from '@/types/types';
 
-const createUserTeam = async ({
+const addPlayersUserTeam = async ({
   userTeamID,
   players,
 }: ICreatePlayerUserTeamsProps): IGenericResponseParent => {
@@ -29,4 +29,4 @@ const createUserTeam = async ({
   return { data, error };
 };
 
-export { createUserTeam };
+export { addPlayersUserTeam };
