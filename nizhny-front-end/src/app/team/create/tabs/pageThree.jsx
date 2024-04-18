@@ -27,13 +27,16 @@ export default function PageThree() {
     console.log('updatedTeamState', updatedTeamState, playerID);
     setTeamState(updatedTeamState);
   };
-  // useEffect(() => {
-  //   console.log('opened', opened);
-  //   opened
-  //     ? handleRouteChange(`modalOpen`, searchParams, 'modalState')
-  //     : handleRouteChange(searchParams, 'modalState');
-  //   // handleRouteChange(`modalOpen`, searchParams, 'modalState');
-  // }, [opened]);
+
+  const createUsersTeam = async () => {
+    /*
+
+1. get the users ID
+2. create the user's team
+3. get the player IDs that the user selected
+4. insert the players into the players_userteams table
+    */
+  };
 
   /*
 

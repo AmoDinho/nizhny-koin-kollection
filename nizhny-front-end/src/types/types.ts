@@ -38,3 +38,26 @@ export type ICreatePlayerUserTeamsProps = {
   userTeamID: Database['public']['Tables']['Players_UserTeams']['Insert']['userTeamID'];
   players: Database['public']['Tables']['Players_UserTeams']['Insert']['playerID'][];
 };
+
+type IUser = {
+  id: string;
+  factors: null;
+  aud: string;
+  iat: Number;
+  iss: string;
+  email: string;
+  phone: string;
+  app_metadata: {
+    provider: string;
+    providers: Array<string>;
+  };
+  user_metadata: Object;
+  role: string;
+  aal: string;
+  amr: Array<Object>;
+  session_id: string;
+  is_anonymous: boolean;
+};
+export type IUserSession = {
+  user: IUser;
+};
