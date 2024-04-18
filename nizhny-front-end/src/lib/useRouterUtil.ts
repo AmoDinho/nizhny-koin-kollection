@@ -14,7 +14,7 @@ export default function useRouterUtil() {
     searchParams: string,
     stateAction: string
   ) => {
-    const newParams = new URLSearchParams(searchParams.toString());
+    const newParams = new URLSearchParams(searchParams);
 
     if (routeTarget) {
       newParams.set(stateAction, routeTarget);

@@ -21,13 +21,19 @@ export default function PageOne() {
       <Input
         placeholder="Argentina FC"
         onBlur={(e) => {
-          handleRouteChange(e.currentTarget.value, searchParams, 'teamName');
+          handleRouteChange(
+            e.currentTarget.value,
+            searchParams.toString(),
+            'teamName'
+          );
         }}
       />
 
       <Button
         className="mt-5"
-        onClick={() => handleRouteChange(`two`, searchParams, 'tabState')}
+        onClick={() =>
+          handleRouteChange(`two`, searchParams.toString(), 'tabState')
+        }
       >
         Next
       </Button>

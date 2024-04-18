@@ -54,13 +54,17 @@ export default function PageTwo() {
       <Button
         variant="secondary"
         className="mt-5"
-        onClick={() => handleRouteChange(`one`, searchParams, 'tabState')}
+        onClick={() =>
+          handleRouteChange(`one`, searchParams.toString(), 'tabState')
+        }
       >
         previous
       </Button>
       <Button
         className="mt-5"
-        onClick={() => handleRouteChange(`three`, searchParams, 'tabState')}
+        onClick={() =>
+          handleRouteChange(`three`, searchParams.toString(), 'tabState')
+        }
       >
         Next
       </Button>

@@ -140,7 +140,9 @@ export default function PageThree() {
         <Button
           variant="secondary"
           className="mt-5"
-          onClick={() => handleRouteChange(`two`, searchParams, 'tabState')}
+          onClick={() =>
+            handleRouteChange(`two`, searchParams.toString(), 'tabState')
+          }
         >
           previous
         </Button>
