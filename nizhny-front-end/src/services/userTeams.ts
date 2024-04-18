@@ -1,10 +1,10 @@
 import { useSupabase } from '@/lib/useSupabase';
-import type { ICreateTeamResponse, ICreateTeamProps } from '@/types/types';
+import type { IGenericResponseParent, ICreateTeamProps } from '@/types/types';
 
 const createUserTeam = async ({
   userID,
   userTeamName,
-}: ICreateTeamProps): ICreateTeamResponse => {
+}: ICreateTeamProps): IGenericResponseParent => {
   let { data, error } = await useSupabase
     .from('UserTeams')
     .insert({ userID: userID, userTeamName: userTeamName })

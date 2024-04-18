@@ -22,14 +22,19 @@ type ICreateTeamSuccessResponse = {
   statusText: string;
 };
 
-type ICreateTeamGenericResponse = {
+type IGenericResponse = {
   status: number;
   statusText: string;
 };
-export type ICreateTeamResponse = {
-  data: ICreateTeamGenericResponse;
-  error: ICreateTeamGenericResponse;
+export type IGenericResponseParent = {
+  data: IGenericResponse;
+  error: IGenericResponse;
 };
 
 export type ICreateTeamProps =
   Database['public']['Tables']['UserTeams']['Insert'];
+
+export type ICreatePlayerUserTeamsProps = {
+  userTeamID: Database['public']['Tables']['Players_UserTeams']['Insert']['userTeamID'];
+  players: Database['public']['Tables']['Players_UserTeams']['Insert']['playerID'][];
+};
