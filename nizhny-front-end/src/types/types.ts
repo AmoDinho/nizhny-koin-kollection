@@ -59,5 +59,12 @@ type IUser = {
   is_anonymous: boolean;
 };
 export type IUserSession = {
+  expires_at: Number;
+  expires_in: Number;
+  token_type: string;
+  access_token: string;
+  refresh_token: string;
+  provider_token: string;
+  provider_refresh_token: string;
   user: IUser;
 };
