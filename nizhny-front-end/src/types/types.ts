@@ -17,9 +17,18 @@ export type IRenderLastItemsProps = {
   itemType: string;
 };
 
-export type ICreateTeamResponse = {
+type ICreateTeamSuccessResponse = {
   status: number;
   statusText: string;
+};
+
+type ICreateTeamGenericResponse = {
+  status: number;
+  statusText: string;
+};
+export type ICreateTeamResponse = {
+  data: ICreateTeamGenericResponse;
+  error: ICreateTeamGenericResponse;
 };
 
 export type ICreateTeamProps =
