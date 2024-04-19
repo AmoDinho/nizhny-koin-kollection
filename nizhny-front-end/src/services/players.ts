@@ -2,18 +2,19 @@ import { useSupabase } from '@/lib/useSupabase';
 import type {
   IGetPaginatedPlayers,
   IGetplayerCountResponse,
+  IGetPaginatedPlayersResponse,
 } from '@/types/types';
 const getPaginatedPlayers = async ({
   from,
   to,
   limit,
-}: IGetPaginatedPlayers) => {
-  let { data: Players, error } = await useSupabase
+}: IGetPaginatedPlayers): Promise<IGetPaginatedPlayersResponse> => {
+  let { data: players, error } = await useSupabase
     .from('Players')
     .select('*')
     .range(from, to)
     .limit(limit);
-  return { Players, error };
+  return { players, error };
 };
 
 const getPlayerCount = async (): Promise<IGetplayerCountResponse> => {

@@ -27,7 +27,7 @@ export type IGenericResponseParent = {
   error: IGenericResponse;
 };
 
-interface ICreateUserTeamPayload {
+export interface ICreateUserTeamPayload {
   data: Database['public']['Tables']['UserTeams']['Insert'][];
   status: number;
   statusText: string;
@@ -42,6 +42,8 @@ export type ICreateUserTeamResponse = {
 export interface ITeam {
   usersTeams: Array<Database['public']['Tables']['Players']['Row']>;
 }
+export type IPlayer = Database['public']['Tables']['Players']['Row'] | null;
+export type IPlayers = Array<IPlayer> | null;
 export type ICreateTeamProps =
   Database['public']['Tables']['UserTeams']['Insert'];
 
@@ -83,4 +85,21 @@ export type IUserSession = {
 export type IGetplayerCountResponse = {
   count: number | null;
   CountError: PostgrestError | null;
+};
+
+interface IPaginationNextProps {
+  onClick: () => void;
+}
+
+interface IPaginationPrevProps {
+  onClick: () => void;
+}
+
+export type IComponentRegistry = {
+  [key: string]: React.FC<IPaginationNextProps | IPaginationPrevProps>;
+};
+
+export type IGetPaginatedPlayersResponse = {
+  players: Array<Object | null>;
+  error: PostgrestError | null;
 };

@@ -51,12 +51,12 @@ export default function PageThree() {
     // console.log('user', user);
     const userTeamName = searchParams.get('teamName');
 
-    let userTeamID: number = 0;
+    let userTeamID: number | undefined = 0;
     try {
-      const { data, error } = (await createUserTeam({
+      const { data } = (await createUserTeam({
         userID,
         userTeamName,
-      })) as ICreateUserTeamPayload;
+      })) as unknown as ICreateUserTeamPayload;
       console.log('data', data[0]);
       userTeamID = data[0].userTeamID;
     } catch (error) {

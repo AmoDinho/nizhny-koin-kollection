@@ -14,7 +14,12 @@ import {
 } from '@/components/ui/pagination';
 import { getPaginatedPlayers, getPlayerCount } from '@/services/players';
 import type { Database } from '@/types/supabase';
-import type { IRenderLastItemsProps } from '@/types/types';
+import type {
+  IRenderLastItemsProps,
+  IComponentRegistry,
+  IPlayer,
+  IPlayers,
+} from '@/types/types';
 import { createTeamState } from '@/state/atom';
 interface IPlayerModalProps {
   isOpened: boolean;
@@ -26,8 +31,7 @@ TO-DO:
 1. sort out active state of pagination
 2. sort out typing
 */
-type IPlayer = Database['public']['Tables']['Players']['Row'] | null;
-type IPlayers = Array<IPlayer> | null;
+
 const PlayerModal = ({
   isOpened,
   close,
@@ -56,11 +60,11 @@ const PlayerModal = ({
     async (currentPageNumber: number): Promise<void> => {
       try {
         const { from, to } = getPagination(currentPageNumber, pageSize);
-        const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
+        const { players } = await getPaginatedPlayers({ from, to, limit: 2 });
 
         // console.log('Players', Players, source);
         setCurrentPage(currentPageNumber);
-        setPlayers(Players);
+        setPlayers(players);
       } catch (error) {
         alert('throw new error');
       }
@@ -82,9 +86,9 @@ const PlayerModal = ({
   }, [isOpened, currentPage, getPlayers]);
   // console.log('Players-state', players, pages, isOpened);
 
-  const RenderLastItems = ({ itemType }: IRenderLastItemsProps) => {
+  const RenderLastItems: React.FC<IRenderLastItemsProps> = ({ itemType }) => {
     // console.log('itemType', itemType);
-    const componentRegistry = {
+    const componentRegistry: IComponentRegistry = {
       next: () => (
         <PaginationNext onClick={() => getPlayers(currentPage + 1)} />
       ),
@@ -101,7 +105,7 @@ const PlayerModal = ({
     );
   };
 
-  const addPlayerToTeam = (player) => {
+  const addPlayerToTeam = (player: IPlayer) => {
     const targetPlayerID = player?.playerID;
     const exitingPlayer = team?.filter(
       (player) => player?.playerID === targetPlayerID

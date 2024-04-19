@@ -1,9 +1,7 @@
 import { atom } from 'recoil';
 import type { Database } from '@/types/supabase';
-import type { IUserSession } from '@/types/types';
-const createTeamState = atom<
-  Array<Database['public']['Tables']['Players']['Row']>
->({
+import type { IUserSession, IPlayer } from '@/types/types';
+const createTeamState = atom<Array<IPlayer>>({
   key: 'createTeamState',
   default: [],
 });

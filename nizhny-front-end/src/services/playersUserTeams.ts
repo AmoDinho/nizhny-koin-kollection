@@ -7,10 +7,14 @@ import type {
 const addPlayersUserTeam = async ({
   userTeamID,
   players,
-}: ICreatePlayerUserTeamsProps): IGenericResponseParent => {
+}: ICreatePlayerUserTeamsProps): Promise<IGenericResponseParent> => {
+  interface IFinalPlayerArray {
+    userTeamID: number | undefined | null;
+    playerID: number | undefined | null;
+  }
   const createPayload = (): Array<{}> => {
-    let finalPlayerArray: [] = [];
-    console.log('players', players);
+    let finalPlayerArray: IFinalPlayerArray[] = [];
+    // console.log('players', players);
 
     players.map((player) =>
       finalPlayerArray.push({
