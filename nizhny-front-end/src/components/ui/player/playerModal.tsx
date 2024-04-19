@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import DefaultModal from '../defaultModal';
 import CoinHolder from '@/static/images/coin.svg';
@@ -51,18 +51,22 @@ const PlayerModal = ({
 
   const sumNumbers = (numberOne: number, numberTwo: number): number =>
     numberOne + numberTwo;
-  const getPlayers = async (currentPageNumber: number): Promise<void> => {
-    try {
-      const { from, to } = getPagination(currentPageNumber, pageSize);
-      const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
 
-      // console.log('Players', Players, source);
-      setCurrentPage(currentPageNumber);
-      setPlayers(Players);
-    } catch (error) {
-      alert('throw new error');
-    }
-  };
+  const getPlayers = useCallback(
+    async (currentPageNumber: number): Promise<void> => {
+      try {
+        const { from, to } = getPagination(currentPageNumber, pageSize);
+        const { Players } = await getPaginatedPlayers({ from, to, limit: 2 });
+
+        // console.log('Players', Players, source);
+        setCurrentPage(currentPageNumber);
+        setPlayers(Players);
+      } catch (error) {
+        alert('throw new error');
+      }
+    },
+    [pageSize]
+  );
 
   const setPageCount = async (): Promise<void> => {
     const { count } = await getPlayerCount();
@@ -75,7 +79,7 @@ const PlayerModal = ({
       console.log('useeffect');
       setPageCount();
     }
-  }, [isOpened]);
+  }, [isOpened, currentPage, getPlayers]);
   console.log('Players-state', players, pages, isOpened);
 
   const RenderLastItems = ({ itemType }: IRenderLastItemsProps) => {
