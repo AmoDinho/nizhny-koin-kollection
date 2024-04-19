@@ -8,7 +8,7 @@ const createTeamState = atom<
   default: [],
 });
 
-const userSession = atom<IUserSession | {}>({
+const userSession = atom<IUserSession | {} | null>({
   key: 'userSession',
   default: {},
 });
