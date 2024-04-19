@@ -33,7 +33,7 @@ const PlayerModal = ({
   close,
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers | null>([]);
-  const [pages, setPages] = useState<number | null>(0);
+  const [pages, setPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const setTeamState = useSetRecoilState(createTeamState);
   const team = useRecoilValue(createTeamState);
@@ -76,14 +76,14 @@ const PlayerModal = ({
   useEffect(() => {
     if (isOpened) {
       getPlayers(currentPage);
-      console.log('useeffect');
+      // console.log('useeffect');
       setPageCount();
     }
   }, [isOpened, currentPage, getPlayers]);
-  console.log('Players-state', players, pages, isOpened);
+  // console.log('Players-state', players, pages, isOpened);
 
   const RenderLastItems = ({ itemType }: IRenderLastItemsProps) => {
-    console.log('itemType', itemType);
+    // console.log('itemType', itemType);
     const componentRegistry = {
       next: () => (
         <PaginationNext onClick={() => getPlayers(currentPage + 1)} />

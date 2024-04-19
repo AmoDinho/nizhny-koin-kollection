@@ -1,4 +1,5 @@
 import React from 'react';
+import { PostgrestError } from '@supabase/supabase-js';
 import type { Database } from './supabase';
 type IFeatures = {
   id: string;
@@ -27,7 +28,7 @@ export type IGenericResponseParent = {
 };
 
 interface ICreateUserTeamPayload {
-  data: Array<Database['public']['Tables']['UserTeams']['Insert']>;
+  data: Database['public']['Tables']['UserTeams']['Insert'][];
   status: number;
   statusText: string;
 }
@@ -77,4 +78,9 @@ export type IUserSession = {
   provider_token: string;
   provider_refresh_token: string;
   user: IUser;
+};
+
+export type IGetplayerCountResponse = {
+  count: number | null;
+  CountError: PostgrestError | null;
 };

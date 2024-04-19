@@ -3,8 +3,8 @@ interface ImageProps {
   imagePath: string | null;
   additionalClassNames?: string;
   onClick?: () => void;
-  width?: Number;
-  height?: Number;
+  width?: number;
+  height?: number;
 }
 
 const ParentImage = ({

@@ -14,7 +14,7 @@ import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
 import { createUserTeam } from '@/services/userTeams';
 import { addPlayersUserTeam } from '@/services/playersUserTeams';
-import type { ITeam, IUserTeam } from '@/types/types';
+import type { ITeam, IUserTeam, ICreateUserTeamPayload } from '@/types/types';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
   const user = useRecoilValue(cookieUserSession);
@@ -53,8 +53,11 @@ export default function PageThree() {
 
     let userTeamID: number = 0;
     try {
-      const { data, error } = await createUserTeam({ userID, userTeamName });
-      // console.log('data', data[0]);
+      const { data, error } = (await createUserTeam({
+        userID,
+        userTeamName,
+      })) as ICreateUserTeamPayload;
+      console.log('data', data[0]);
       userTeamID = data[0].userTeamID;
     } catch (error) {
       alert(error);

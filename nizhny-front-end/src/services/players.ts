@@ -1,5 +1,8 @@
 import { useSupabase } from '@/lib/useSupabase';
-import type { IGetPaginatedPlayers } from '@/types/types';
+import type {
+  IGetPaginatedPlayers,
+  IGetplayerCountResponse,
+} from '@/types/types';
 const getPaginatedPlayers = async ({
   from,
   to,
@@ -13,7 +16,7 @@ const getPaginatedPlayers = async ({
   return { Players, error };
 };
 
-const getPlayerCount = async () => {
+const getPlayerCount = async (): Promise<IGetplayerCountResponse> => {
   let { count, error: CountError } = await useSupabase
     .from('Players')
     .select('*', { count: 'exact', head: true });
