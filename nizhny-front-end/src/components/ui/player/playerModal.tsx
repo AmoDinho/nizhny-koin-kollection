@@ -34,14 +34,14 @@ const PlayerModal = ({
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers | null>([]);
   const [pages, setPages] = useState<number | null>(0);
-  const [currentPage, setCurrentPage] = useState<number | null>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const setTeamState = useSetRecoilState(createTeamState);
   const team = useRecoilValue(createTeamState);
 
   let pageSize = 2;
   // const [players, setPlayers] = useState([]);
 
-  const getPagination = (page, size) => {
+  const getPagination = (page: number, size: number) => {
     const limit = size ? +size : 2;
     const from = page ? page * limit : 0;
     const to = page ? from + size : size;
