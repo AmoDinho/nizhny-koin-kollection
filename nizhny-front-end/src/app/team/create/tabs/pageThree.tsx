@@ -31,7 +31,7 @@ export default function PageThree() {
     let cloneTeamState = [...team];
 
     const updatedTeamState = cloneTeamState.filter(
-      (player) => player.playerID !== playerID
+      (player) => player?.playerID !== playerID
     );
     // console.log('updatedTeamState', updatedTeamState, playerID);
     setTeamState(updatedTeamState);
@@ -57,12 +57,12 @@ export default function PageThree() {
         userID,
         userTeamName,
       })) as unknown as ICreateUserTeamPayload;
-      console.log('data', data[0]);
+      //@ts-ignore
       userTeamID = data[0].userTeamID;
     } catch (error) {
       alert(error);
     }
-    const playerIDs = team.map((player) => player.playerID);
+    const playerIDs = team.map((player) => player?.playerID);
     // console.log('userTeamID', userTeamID);
 
     try {
@@ -134,6 +134,7 @@ export default function PageThree() {
         Build your team
       </TypographyWrapper>
 
+      {/*@ts-ignore*/}
       <DetermineKoinsToRender usersTeams={team} />
 
       <span>
