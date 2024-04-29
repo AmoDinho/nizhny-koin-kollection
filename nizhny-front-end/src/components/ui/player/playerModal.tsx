@@ -129,7 +129,7 @@ const PlayerModal = ({
       >
         {players?.map((player, playerIndex) => (
           <ParentImage
-            imagePath={player?.imageUrl}
+            imagePath={player?.imageUrl || ''}
             key={playerIndex}
             onClick={() => addPlayerToTeam(player)}
           />
