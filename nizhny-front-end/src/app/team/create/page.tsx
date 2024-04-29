@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import PageOne from './tabs/pageOne';
 import PageTwo from './tabs/pageTwo';
@@ -21,5 +22,9 @@ export default function CreateTeam() {
         return <p>No component selected</p>;
     }
   };
-  return <>{renderComponent(currentTabState)}</>;
+  return (
+    <>
+      <Suspense>{renderComponent(currentTabState)}</Suspense>
+    </>
+  );
 }
