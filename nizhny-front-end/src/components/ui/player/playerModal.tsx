@@ -74,7 +74,7 @@ const PlayerModal = ({
 
   const setPageCount = async (): Promise<void> => {
     const { count } = await getPlayerCount();
-    setPages(count / 2);
+    setPages(count === null ? 0 : count / 2);
   };
 
   useEffect(() => {
