@@ -38,17 +38,19 @@ export type IAddPlayerUserTeamResponse = {
 };
 
 export interface ICreateUserTeamPayload {
-  data: Database['public']['Tables']['UserTeams']['Insert'][];
+  data: Database['public']['Tables']['UserTeams']['Insert'][] | null;
   status: number;
   statusText: string;
 }
 export type IUserTeam = Array<
   Database['public']['Tables']['UserTeams']['Insert']
 >;
+
 export type ICreateUserTeamResponse = {
-  data: ICreateUserTeamPayload;
-  error: IGenericResponse;
+  data: Database['public']['Tables']['UserTeams']['Insert'][] | null;
+  error: PostgrestError | null;
 };
+
 export interface ITeam {
   usersTeams: Array<Database['public']['Tables']['Players']['Row']>;
 }
