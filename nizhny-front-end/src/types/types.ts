@@ -33,7 +33,7 @@ type IAddPlayerUserTeamData = {
   statusText: string;
 };
 export type IAddPlayerUserTeamResponse = {
-  data: IAddPlayerUserTeamData;
+  data: Database['public']['Tables']['Players_UserTeams']['Insert'][] | null;
   error: PostgrestError | null;
 };
 
@@ -112,6 +112,6 @@ export type IComponentRegistry = {
 };
 
 export type IGetPaginatedPlayersResponse = {
-  players: Array<Object | null>;
+  players: Array<Object> | null;
   error: PostgrestError | null;
 };
