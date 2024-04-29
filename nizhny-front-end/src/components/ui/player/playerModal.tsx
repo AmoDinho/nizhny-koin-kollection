@@ -100,6 +100,7 @@ const PlayerModal = ({
     const TargetComponent = componentRegistry[`${itemType}`];
     return (
       <PaginationItem>
+        {/* @ts-ignore */}
         <TargetComponent />
       </PaginationItem>
     );
