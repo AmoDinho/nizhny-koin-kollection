@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import RecoilContextProvider from '@/state/RecoilContextProvider';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { Bungee_Shade, Advent_Pro } from 'next/font/google';
@@ -31,13 +32,15 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <RecoilContextProvider>
-        <body
-          className={`${bungee.variable} ${advent.variable} bg-diamond-dark mt-5 p-5`}
-        >
-          <MantineProvider>{children}</MantineProvider>
-        </body>
-      </RecoilContextProvider>
+      <Suspense>
+        <RecoilContextProvider>
+          <body
+            className={`${bungee.variable} ${advent.variable} bg-diamond-dark mt-5 p-5`}
+          >
+            <MantineProvider>{children}</MantineProvider>
+          </body>
+        </RecoilContextProvider>
+      </Suspense>
     </html>
   );
 }
