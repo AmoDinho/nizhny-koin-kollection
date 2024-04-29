@@ -95,7 +95,7 @@ export type IUserSession = {
 };
 
 export type IGetplayerCountResponse = {
-  count: number | null;
+  count: number | 0;
   CountError: PostgrestError | null;
 };
 

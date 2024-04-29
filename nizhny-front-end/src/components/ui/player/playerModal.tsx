@@ -37,7 +37,7 @@ const PlayerModal = ({
   close,
 }: IPlayerModalProps): React.JSX.Element => {
   const [players, setPlayers] = useState<IPlayers | null>([]);
-  const [pages, setPages] = useState<number>(0);
+  const [pages, setPages] = useState<number | null>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const setTeamState = useSetRecoilState(createTeamState);
   const team = useRecoilValue(createTeamState);
