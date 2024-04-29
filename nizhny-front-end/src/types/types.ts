@@ -112,6 +112,6 @@ export type IComponentRegistry = {
 };
 
 export type IGetPaginatedPlayersResponse = {
-  players: Array<Object> | null;
+  players: IPlayers;
   error: PostgrestError | null;
 };
