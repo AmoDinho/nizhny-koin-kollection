@@ -23,8 +23,18 @@ type IGenericResponse = {
   statusText: string;
 };
 export type IGenericResponseParent = {
-  data: IGenericResponse;
-  error: IGenericResponse;
+  data: IGenericResponse | null;
+  error: PostgrestError | null;
+};
+
+type IAddPlayerUserTeamData = {
+  data: Database['public']['Tables']['Players_UserTeams']['Insert'][];
+  status: number;
+  statusText: string;
+};
+export type IAddPlayerUserTeamResponse = {
+  data: IAddPlayerUserTeamData;
+  error: PostgrestError | null;
 };
 
 export interface ICreateUserTeamPayload {
