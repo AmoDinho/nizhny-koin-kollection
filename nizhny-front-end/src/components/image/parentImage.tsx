@@ -16,7 +16,7 @@ const ParentImage = ({
 }: ImageProps): React.JSX.Element => (
   <Image
     onClick={onClick}
-    src={imagePath}
+    src={imagePath || ''}
     alt="something went wrong"
     className={additionalClassNames}
     width={width ? width : 100}
