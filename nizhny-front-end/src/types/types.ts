@@ -120,3 +120,17 @@ export type IGetPaginatedPlayersResponse = {
   players: IPlayers;
   error: PostgrestError | null;
 };
+
+interface IPlayersInTeam {
+  playerName: string;
+  playerSurname: string;
+  imageURL: string;
+  playerID: number;
+  userTeamName: string;
+  userTeamID: number;
+}
+
+export type IGetPlayersInATeamResponse = {
+  data: IPlayersInTeam[];
+  error: PostgrestError | null;
+};

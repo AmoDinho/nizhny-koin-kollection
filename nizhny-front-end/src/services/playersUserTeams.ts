@@ -1,6 +1,6 @@
 import { useSupabase } from '@/lib/useSupabase';
 import type {
-  IGenericResponseParent,
+  IGetPlayersInATeamResponse,
   ICreatePlayerUserTeamsProps,
   IAddPlayerUserTeamResponse,
 } from '@/types/types';
@@ -36,8 +36,15 @@ const addPlayersUserTeam = async ({
   return { data, error };
 };
 
-// const getTeamByUser = async ({})=>{
-
-// }
+const getPlayersInATeam = async (
+  userTeamID: string
+): Promise<IGetPlayersInATeamResponse> => {
+  let { data, error } = await useSupabase
+    .from('Players')
+    .select(
+      'playerName,playerSurname,imageUrl,playerID, Players_UserTeams!inner(userTeamID)'
+    )
+    .eq('Players_UserTeams.userTeamID', userTeamID);
+};
 
 export { addPlayersUserTeam };
