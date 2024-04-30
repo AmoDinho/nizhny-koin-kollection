@@ -44,7 +44,12 @@ export interface ICreateUserTeamPayload {
 }
 export type IUserTeam = Array<
   Database['public']['Tables']['UserTeams']['Insert']
->;
+> | null;
+
+export type IUserTeamResponse = {
+  data: IUserTeam | null;
+  error: PostgrestError | null;
+};
 
 export type ICreateUserTeamResponse = {
   data: Database['public']['Tables']['UserTeams']['Insert'][] | null;

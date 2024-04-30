@@ -1,5 +1,9 @@
 import { useSupabase } from '@/lib/useSupabase';
-import type { ICreateUserTeamResponse, ICreateTeamProps } from '@/types/types';
+import type {
+  ICreateUserTeamResponse,
+  ICreateTeamProps,
+  IUserTeamResponse,
+} from '@/types/types';
 
 const createUserTeam = async ({
   userID,
@@ -12,5 +16,12 @@ const createUserTeam = async ({
 
   return { data, error };
 };
+const getAUsersTeams = async (userID: string): Promise<IUserTeamResponse> => {
+  let { data, error } = await useSupabase
+    .from('UserTeams')
+    .select('*')
+    .eq('userID', userID);
 
-export { createUserTeam };
+  return { data, error };
+};
+export { createUserTeam, getAUsersTeams };

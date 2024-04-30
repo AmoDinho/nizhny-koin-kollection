@@ -145,7 +145,7 @@ export type Database = {
         Insert: {
           createAt?: string | null;
           userID: string | null;
-          userTeamID?: number;
+          userTeamID?: number | null;
           userTeamName: string | null;
         };
         Update: {

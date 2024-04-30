@@ -36,4 +36,8 @@ const addPlayersUserTeam = async ({
   return { data, error };
 };
 
+// const getTeamByUser = async ({})=>{
+
+// }
+
 export { addPlayersUserTeam };
