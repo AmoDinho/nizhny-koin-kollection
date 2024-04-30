@@ -2,7 +2,6 @@
 import { redirect } from 'next/navigation';
 import { useRecoilValue } from 'recoil';
 import Link from 'next/link';
-import type { Database } from '@/types/supabase';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { userSession } from '@/state/atom';
@@ -30,6 +29,14 @@ export default function Dashboard() {
         <Button>
           <Link href={`/team/create?tabState=one`}>Create new team</Link>
         </Button>
+      </div>
+      <div className="mt-10">
+        <TypographyWrapper
+          WrapperTypes="HeadingTwo"
+          additonalClassNames="text-red-600"
+        >
+          Your Teams
+        </TypographyWrapper>
       </div>
     </div>
   );

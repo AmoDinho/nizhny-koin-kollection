@@ -66,6 +66,7 @@ export default function Login() {
         data: { session },
       } = await supabase.auth.getSession();
 
+      console.log('ssse', session);
       setUserSession(session);
       router.refresh();
       router.push('/team/dashboard');
