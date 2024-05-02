@@ -121,16 +121,21 @@ export type IGetPaginatedPlayersResponse = {
   error: PostgrestError | null;
 };
 
+type IJoinUserTeams = {
+  userTeamID: number | null;
+};
+
 interface IPlayersInTeam {
-  playerName: string;
-  playerSurname: string;
-  imageURL: string;
-  playerID: number;
-  userTeamName: string;
-  userTeamID: number;
+  Players_UserTeams: Array<IJoinUserTeams>;
+  playerName: string | null;
+  playerSurname: string | null;
+  imageURL: string | null;
+  playerID: number | null;
+  userTeamName: string | null;
+  userTeamID: number | null;
 }
 
 export type IGetPlayersInATeamResponse = {
-  data: IPlayersInTeam[];
+  data: IPlayersInTeam[] | null;
   error: PostgrestError | null;
 };

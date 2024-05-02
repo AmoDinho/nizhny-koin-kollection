@@ -42,9 +42,12 @@ const getPlayersInATeam = async (
   let { data, error } = await useSupabase
     .from('Players')
     .select(
-      'playerName,playerSurname,imageUrl,playerID, Players_UserTeams!inner(userTeamID)'
+      'playerName,playerSurname,imageUrl,playerID,userTeamName Players_UserTeams!inner(userTeamID)'
     )
     .eq('Players_UserTeams.userTeamID', userTeamID);
+
+  console.log('data', data);
+  return { data, error };
 };
 
-export { addPlayersUserTeam };
+export { addPlayersUserTeam, getPlayersInATeam };

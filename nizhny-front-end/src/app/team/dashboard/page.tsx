@@ -1,10 +1,12 @@
 'use client';
+import { useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { useRecoilValue } from 'recoil';
 import Link from 'next/link';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { userSession } from '@/state/atom';
+import { getPlayersInATeam } from '@/services/playersUserTeams';
 export default function Dashboard() {
   const session = useRecoilValue(userSession);
 
@@ -13,6 +15,12 @@ export default function Dashboard() {
     redirect('/');
   }
 
+  const getPlayers = async () => {
+    await getPlayersInATeam('2');
+  };
+  useEffect(() => {
+    getPlayers();
+  }, []);
   return (
     <div className="grid justify-items-center">
       <TypographyWrapper
