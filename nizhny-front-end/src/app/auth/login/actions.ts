@@ -1,3 +1,4 @@
+'use server';
 import { createClient } from '@/lib/useSupabaseServer';
 import { redirect } from 'next/navigation';
 // import { useSetRecoilState } from 'recoil';
@@ -9,17 +10,22 @@ export async function login(formData) {
 
   try {
     //sign user in
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: formData.email,
       password: formData.password,
     });
+
+    console.log('data', data);
+    console.log('error', error);
 
     if (error) {
       redirect('/');
     }
 
-    redirect('/');
-  } catch (e) {}
+    redirect('/team/dashboard');
+  } catch (e) {
+    console.log('eee', e);
+  }
 
   //add the cookies to local storage
 
