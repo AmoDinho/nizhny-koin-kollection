@@ -19,7 +19,7 @@ import {
 import type { Database } from '@/types/supabase';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-
+import { login } from './actions';
 import { TypographyWrapper } from '@/components/typography';
 
 export default function Login() {
@@ -57,22 +57,23 @@ export default function Login() {
     values: z.infer<typeof formSchema>
   ): Promise<void> => {
     console.log('values', values);
-    try {
-      await supabase.auth.signInWithPassword({
-        email: values.email,
-        password: values.password,
-      });
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+    await login(values);
+    // try {
+    //   await supabase.auth.signInWithPassword({
+    //     email: values.email,
+    //     password: values.password,
+    //   });
+    //   const {
+    //     data: { session },
+    //   } = await supabase.auth.getSession();
 
-      console.log('ssse', session);
-      setUserSession(session);
-      router.refresh();
-      router.push('/team/dashboard');
-    } catch (e) {
-      return alert('issue logging you in');
-    }
+    //   console.log('ssse', session);
+    //   setUserSession(session);
+    //   router.refresh();
+    //   router.push('/team/dashboard');
+    // } catch (e) {
+    //   return alert('issue logging you in');
+    // }
   };
 
   return (
@@ -83,6 +84,7 @@ export default function Login() {
       </TypographyWrapper>
       <Form {...form}>
         <form
+          // action={login(form.getValues())}
           onSubmit={form.handleSubmit(handleSignIn)}
           className="grid grid-cols-1 p-4 bg-white rounded-xl"
         >
@@ -112,7 +114,7 @@ export default function Login() {
               </FormItem>
             )}
           />
-          <Button onClick={() => router.push('/auth/login')}>Log In</Button>
+          <Button>Log In</Button>
         </form>
       </Form>
     </div>
