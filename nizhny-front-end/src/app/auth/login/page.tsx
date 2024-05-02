@@ -1,9 +1,5 @@
 'use client';
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
-import { useSetRecoilState } from 'recoil';
-import { userSession } from '@/state/atom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -23,7 +19,7 @@ import { login } from './actions';
 import { TypographyWrapper } from '@/components/typography';
 
 export default function Login() {
-  const setUserSession = useSetRecoilState(userSession);
+  // const setUserSession = useSetRecoilState(userSession);
 
   const formSchema = z.object({
     email: z
@@ -36,7 +32,7 @@ export default function Login() {
       message: 'Please enter your password',
     }),
   });
-  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,7 +40,6 @@ export default function Login() {
       password: '',
     },
   });
-  const supabase = createClientComponentClient<Database>();
 
   // const handleFormChange = ({ key, value }: TFormPayload) => {
   //   let formStateClone: TFormData = { ...formState };
