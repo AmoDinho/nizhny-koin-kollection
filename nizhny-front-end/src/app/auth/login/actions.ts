@@ -21,11 +21,10 @@ export async function login(formData) {
     if (error) {
       redirect('/');
     }
-
-    redirect('/team/dashboard');
   } catch (e) {
     console.log('eee', e);
   }
+  redirect('/team/dashboard');
 
   //add the cookies to local storage
 
