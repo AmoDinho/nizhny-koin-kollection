@@ -1,24 +1,32 @@
 'use client';
-import { useEffect } from 'react';
 import { redirect } from 'next/navigation';
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
-import { userSession } from '@/state/atom';
 import { getPlayersInATeam } from '@/services/playersUserTeams';
+import { supabaseHelper } from '@/lib/useSupabase';
 export default function Dashboard() {
-  const session = useRecoilValue(userSession);
+  // const session = useRecoilValue(cookieUserSession);
 
-  console.log('session', JSON.stringify(session));
-  if (!session) {
-    redirect('/');
-  }
+  // const supabase = createClient();
+
+  const checkSession = async () => {
+    const session = await supabaseHelper().auth.getSession();
+    console.log('getPlayers', session);
+
+    if (session.data.session?.user.aud !== 'authenticated') {
+      redirect('/');
+    }
+  };
 
   const getPlayers = async () => {
-    await getPlayersInATeam('2');
+    return await getPlayersInATeam('2');
   };
+
   useEffect(() => {
+    // getPlayers();
+    checkSession();
     getPlayers();
   }, []);
   return (

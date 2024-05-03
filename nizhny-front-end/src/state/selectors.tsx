@@ -1,8 +1,8 @@
 import { selector } from 'recoil';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+// import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
-import type { Database } from '@/types/supabase';
+// import type { Database } from '@/types/supabase';
 
 // type IPlayer = Database['public']['Tables']['Players']['Row'];
 // const createTeamMutation = selector({
@@ -20,6 +20,8 @@ const cookieUserSession = selector({
     const userCookie = cookieStore.get(
       `sb-${process.env.NEXT_PUBLIC_SUPABASE_PROJECT_KEY}-auth-token`
     );
+    const allCookies = cookieStore.getAll();
+    console.log('userCookie?.value;', userCookie?.value, allCookies);
     return userCookie?.value;
   },
 });

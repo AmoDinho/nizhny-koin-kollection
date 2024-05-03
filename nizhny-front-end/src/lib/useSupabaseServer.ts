@@ -30,3 +30,9 @@ export function createClient() {
     }
   );
 }
+
+export function ServerClient() {
+  const supabase = createClient();
+
+  return supabase;
+}

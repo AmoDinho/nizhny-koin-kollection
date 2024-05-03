@@ -1,4 +1,4 @@
-import { useSupabase } from '@/lib/useSupabase';
+import { supabaseHelper } from '@/lib/useSupabase';
 import type {
   IGetPlayersInATeamResponse,
   ICreatePlayerUserTeamsProps,
@@ -28,7 +28,7 @@ const addPlayersUserTeam = async ({
     return finalPlayerArray;
   };
 
-  let { data, error } = await useSupabase
+  let { data, error } = await supabaseHelper()
     .from('Players_UserTeams')
     .insert(createPayload() as unknown as IFinalPlayerArray[])
     .select();
@@ -39,7 +39,7 @@ const addPlayersUserTeam = async ({
 const getPlayersInATeam = async (
   userTeamID: string
 ): Promise<IGetPlayersInATeamResponse> => {
-  let { data, error } = await useSupabase
+  let { data, error } = await supabaseHelper()
     .from('Players')
     .select(
       'playerName,playerSurname,imageUrl,playerID,userTeamName Players_UserTeams!inner(userTeamID)'
