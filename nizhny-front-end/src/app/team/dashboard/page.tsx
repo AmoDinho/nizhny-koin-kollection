@@ -35,7 +35,9 @@ export default function Dashboard() {
   useEffect(() => {
     // getPlayers();
     checkSession();
-    getUsersTeams(currentUserID);
+    if (currentUserTeams?.length === 0) {
+      getUsersTeams(currentUserID);
+    }
   }, [currentUserID, currentUserTeams]);
   return (
     <div className="grid justify-items-center">
