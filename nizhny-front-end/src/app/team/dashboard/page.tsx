@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { getAUsersTeams } from '@/services/userTeams';
 import { supabaseHelper } from '@/lib/useSupabase';
 import type { IUserTeam } from '@/types/types';
+import TeamCard from '@/components/ui/teamCard';
 export default function Dashboard() {
   // const session = useRecoilValue(cookieUserSession);
 
@@ -60,6 +61,13 @@ export default function Dashboard() {
         >
           Your Teams
         </TypographyWrapper>
+        {currentUserTeams?.map((team, teamIndex) => (
+          <TeamCard
+            key={teamIndex}
+            teamName={team.userTeamName}
+            onClick={() => redirect(`/view-team/${team.userTeamID}`)}
+          />
+        ))}
       </div>
     </div>
   );

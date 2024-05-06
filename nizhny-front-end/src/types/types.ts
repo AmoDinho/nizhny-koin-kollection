@@ -141,6 +141,6 @@ export type IGetPlayersInATeamResponse = {
 };
 
 export type ITeamCard = {
-  teamName: string;
+  teamName: string | null;
   onClick: () => void;
 };
