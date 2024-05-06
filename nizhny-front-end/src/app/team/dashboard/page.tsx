@@ -6,11 +6,13 @@ import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { getAUsersTeams } from '@/services/userTeams';
 import { supabaseHelper } from '@/lib/useSupabase';
+import type { IUserTeam } from '@/types/types';
 export default function Dashboard() {
   // const session = useRecoilValue(cookieUserSession);
 
   // const supabase = createClient();
   const [currentUserID, setCurrentUserID] = useState<string>('');
+  const [currentUserTeams, setCurrentUserTeams] = useState<IUserTeam>([]);
   const checkSession = async () => {
     const session = await supabaseHelper().auth.getSession();
     console.log('getPlayers', session);
@@ -25,8 +27,8 @@ export default function Dashboard() {
   };
 
   const getUsersTeams = async (userID: string) => {
-    console.log('userID', userID);
-    return await getAUsersTeams(userID);
+    const teams = await getAUsersTeams(userID);
+    setCurrentUserTeams(teams.data);
   };
 
   useEffect(() => {
