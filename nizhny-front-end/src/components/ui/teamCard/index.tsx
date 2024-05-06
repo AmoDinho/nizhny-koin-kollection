@@ -6,10 +6,10 @@ const TeamCard = ({ teamName, onClick }: ITeamCard): React.JSX.Element => {
   return (
     <Card
       onClick={onClick}
-      className="bg-white dark:bg-gray-950 rounded-lg p-4 shadow-sm"
+      className="bg-white dark:bg-gray-950 rounded-lg p-4 shadow-sm cursor-point"
     >
       <CardContent className="flex items-center gap-4">
-        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+        <div className="w-10 h-10 bg-gray-500 rounded-full"></div>
         <TypographyWrapper WrapperTypes="HeadingThree">
           {teamName}
         </TypographyWrapper>

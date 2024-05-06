@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/team/create/tabs/pageOne.tsx",
+    "src/app/view/create/tabs/pageOne.tsx",
     "src/lib"
   ],
   "exclude": ["node_modules"]
