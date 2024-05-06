@@ -1,5 +1,5 @@
 'use client';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { TypographyWrapper } from '@/components/typography';
@@ -8,24 +8,27 @@ import { getAUsersTeams } from '@/services/userTeams';
 import { supabaseHelper } from '@/lib/useSupabase';
 import type { IUserTeam } from '@/types/types';
 import TeamCard from '@/components/ui/teamCard';
-export default function Dashboard() {
+import isAuth from '@/components/hocs/isAuth';
+const Dashboard = () => {
   // const session = useRecoilValue(cookieUserSession);
 
   // const supabase = createClient();
+  const router = useRouter();
+
   const [currentUserID, setCurrentUserID] = useState<string>('');
   const [currentUserTeams, setCurrentUserTeams] = useState<IUserTeam>([]);
-  const checkSession = async () => {
-    const session = await supabaseHelper().auth.getSession();
-    console.log('getPlayers', session);
+  // const checkSession = async () => {
+  //   const session = await supabaseHelper().auth.getSession();
+  //   console.log('getPlayers', session);
 
-    if (session.data.session?.user.aud !== 'authenticated') {
-      redirect('/');
-    } else {
-      console.log('xxx', session.data.session.user.id);
+  //   if (session.data.session?.user.aud !== 'authenticated') {
+  //     redirect('/');
+  //   } else {
+  //     console.log('xxx', session.data.session.user.id);
 
-      setCurrentUserID(session.data.session.user.id);
-    }
-  };
+  //     setCurrentUserID(session.data.session.user.id);
+  //   }
+  // };
 
   const getUsersTeams = async (userID: string) => {
     const teams = await getAUsersTeams(userID);
@@ -34,7 +37,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     // getPlayers();
-    checkSession();
+    // checkSession();
     if (currentUserTeams?.length === 0) {
       getUsersTeams(currentUserID);
     }
@@ -68,11 +71,13 @@ export default function Dashboard() {
             <TeamCard
               key={teamIndex}
               teamName={team.userTeamName}
-              onClick={() => redirect(`/view-team/${team.userTeamID}`)}
+              onClick={() => router.push(`/view-team/${team.userTeamID}`)}
             />
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default isAuth(Dashboard);
