@@ -36,7 +36,7 @@ export default function Dashboard() {
     // getPlayers();
     checkSession();
     getUsersTeams(currentUserID);
-  }, [currentUserID]);
+  }, [currentUserID, currentUserTeams]);
   return (
     <div className="grid justify-items-center">
       <TypographyWrapper
@@ -61,13 +61,15 @@ export default function Dashboard() {
         >
           Your Teams
         </TypographyWrapper>
-        {currentUserTeams?.map((team, teamIndex) => (
-          <TeamCard
-            key={teamIndex}
-            teamName={team.userTeamName}
-            onClick={() => redirect(`/view-team/${team.userTeamID}`)}
-          />
-        ))}
+        <div className="grid grid-cols-2 gap-4">
+          {currentUserTeams?.map((team, teamIndex) => (
+            <TeamCard
+              key={teamIndex}
+              teamName={team.userTeamName}
+              onClick={() => redirect(`/view-team/${team.userTeamID}`)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
