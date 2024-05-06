@@ -1,34 +1,39 @@
 'use client';
 import { redirect } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
-import { getPlayersInATeam } from '@/services/playersUserTeams';
+import { getAUsersTeams } from '@/services/userTeams';
 import { supabaseHelper } from '@/lib/useSupabase';
 export default function Dashboard() {
   // const session = useRecoilValue(cookieUserSession);
 
   // const supabase = createClient();
-
+  const [currentUserID, setCurrentUserID] = useState<string>('');
   const checkSession = async () => {
     const session = await supabaseHelper().auth.getSession();
     console.log('getPlayers', session);
 
     if (session.data.session?.user.aud !== 'authenticated') {
       redirect('/');
+    } else {
+      console.log('xxx', session.data.session.user.id);
+
+      setCurrentUserID(session.data.session.user.id);
     }
   };
 
-  const getPlayers = async () => {
-    return await getPlayersInATeam('2');
+  const getUsersTeams = async (userID: string) => {
+    console.log('userID', userID);
+    return await getAUsersTeams(userID);
   };
 
   useEffect(() => {
     // getPlayers();
     checkSession();
-    getPlayers();
-  }, []);
+    getUsersTeams(currentUserID);
+  }, [currentUserID]);
   return (
     <div className="grid justify-items-center">
       <TypographyWrapper

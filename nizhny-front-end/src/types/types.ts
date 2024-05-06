@@ -126,13 +126,13 @@ type IJoinUserTeams = {
 };
 
 interface IPlayersInTeam {
-  Players_UserTeams: Array<IJoinUserTeams>;
+  Players_UserTeams: IJoinUserTeams[];
   playerName: string | null;
   playerSurname: string | null;
-  imageURL: string | null;
+  imageUrl: string | null;
   playerID: number | null;
-  userTeamName: string | null;
-  userTeamID: number | null;
+  // userTeamName: string | null;
+  // userTeamID: number | null;
 }
 
 export type IGetPlayersInATeamResponse = {

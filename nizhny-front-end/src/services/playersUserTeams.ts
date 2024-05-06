@@ -42,7 +42,7 @@ const getPlayersInATeam = async (
   let { data, error } = await supabaseHelper()
     .from('Players')
     .select(
-      'playerName,playerSurname,imageUrl,playerID,userTeamName Players_UserTeams!inner(userTeamID)'
+      'playerName,playerSurname,imageUrl,playerID, Players_UserTeams!inner(userTeamID)'
     )
     .eq('Players_UserTeams.userTeamID', userTeamID);
 
