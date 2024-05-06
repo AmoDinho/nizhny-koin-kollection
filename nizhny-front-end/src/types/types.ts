@@ -139,3 +139,8 @@ export type IGetPlayersInATeamResponse = {
   data: IPlayersInTeam[] | null;
   error: PostgrestError | null;
 };
+
+export type ITeamCard = {
+  teamName: string;
+  onClick: () => void;
+};
