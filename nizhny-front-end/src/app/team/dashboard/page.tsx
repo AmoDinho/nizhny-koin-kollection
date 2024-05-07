@@ -64,7 +64,7 @@ const Dashboard = () => {
             <TeamCard
               key={teamIndex}
               teamName={team.userTeamName}
-              onClick={() => router.push(`/view-team/${team.userTeamID}`)}
+              onClick={() => router.push(`/team/view/${team.userTeamID}`)}
             />
           ))}
         </div>
