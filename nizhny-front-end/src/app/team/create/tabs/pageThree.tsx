@@ -8,7 +8,6 @@ import useRouterUtil from '@/lib/useRouterUtil';
 import { useSearchParams } from 'next/navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { createTeamState } from '@/state/atom';
-import { cookieUserSession } from '@/state/selectors';
 import ParentImage from '@/components/image/parentImage';
 import CoinHolder from '@/static/images/coin.svg';
 import { PlayerModal } from '@/components/ui/player/playerModal';
@@ -21,7 +20,7 @@ export default function PageThree() {
 
   const setTeamState = useSetRecoilState(createTeamState);
   const searchParams = useSearchParams();
-  const { handleRouteChange } = useRouterUtil();
+  const { handleRouteChange, router } = useRouterUtil();
   const [opened, { open, close }] = useDisclosure(false);
 
   type IRemovePlayerProps = {
@@ -71,7 +70,9 @@ export default function PageThree() {
         userTeamID: userTeamID,
       });
       //add notification
+      alert('success! you have created a new team');
       // route the user to the dashboard
+      router.push('/team/dashboard');
     } catch (error) {
       alert(error);
     }

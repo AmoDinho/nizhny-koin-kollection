@@ -28,5 +28,5 @@ export default function useRouterUtil() {
     router.push(createUrl('create', newParams));
   };
 
-  return { handleRouteChange };
+  return { handleRouteChange, router };
 }
