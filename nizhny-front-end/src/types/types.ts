@@ -125,7 +125,7 @@ type IJoinUserTeams = {
   userTeamID: number | null;
 };
 
-interface IPlayersInTeam {
+export interface IPlayersInTeam {
   Players_UserTeams: IJoinUserTeams[];
   playerName: string | null;
   playerSurname: string | null;
