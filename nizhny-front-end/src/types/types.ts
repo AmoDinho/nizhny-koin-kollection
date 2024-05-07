@@ -144,3 +144,8 @@ export type ITeamCard = {
   teamName: string | null;
   onClick: () => void;
 };
+
+export type IFormDataPayload = {
+  email: string;
+  password: string;
+};

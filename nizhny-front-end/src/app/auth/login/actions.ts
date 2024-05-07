@@ -1,9 +1,10 @@
 'use server';
 import { createClient } from '@/lib/useSupabaseServer';
+import { IFormDataPayload } from '@/types/types';
 import { redirect } from 'next/navigation';
 // import { useSetRecoilState } from 'recoil';
 // import { userSession } from '@/state/atom';
-export async function login(formData) {
+export async function login(formData: IFormDataPayload) {
   console.log('formData', formData);
 
   const supabase = createClient();
