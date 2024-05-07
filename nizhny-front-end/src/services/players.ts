@@ -1,4 +1,4 @@
-import { useSupabase } from '@/lib/useSupabase';
+import { supabaseHelper } from '@/lib/useSupabase';
 import type {
   IGetPaginatedPlayers,
   IGetplayerCountResponse,
@@ -9,7 +9,7 @@ const getPaginatedPlayers = async ({
   to,
   limit,
 }: IGetPaginatedPlayers): Promise<IGetPaginatedPlayersResponse> => {
-  let { data: players, error } = await useSupabase
+  let { data: players, error } = await supabaseHelper()
     .from('Players')
     .select('*')
     .range(from, to)
@@ -18,7 +18,7 @@ const getPaginatedPlayers = async ({
 };
 
 const getPlayerCount = async (): Promise<IGetplayerCountResponse> => {
-  let { count, error: CountError } = await useSupabase
+  let { count, error: CountError } = await supabaseHelper()
     .from('Players')
     .select('*', { count: 'exact', head: true });
 
