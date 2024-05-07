@@ -5,30 +5,17 @@ import Link from 'next/link';
 import { TypographyWrapper } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { getAUsersTeams } from '@/services/userTeams';
-import { supabaseHelper } from '@/lib/useSupabase';
 import type { IUserTeam } from '@/types/types';
 import TeamCard from '@/components/ui/teamCard';
 import isAuth from '@/components/hocs/isAuth';
+import { getUserID } from '@/lib/utils';
 const Dashboard = () => {
   // const session = useRecoilValue(cookieUserSession);
 
   // const supabase = createClient();
   const router = useRouter();
 
-  const [currentUserID, setCurrentUserID] = useState<string>('');
   const [currentUserTeams, setCurrentUserTeams] = useState<IUserTeam>([]);
-  // const checkSession = async () => {
-  //   const session = await supabaseHelper().auth.getSession();
-  //   console.log('getPlayers', session);
-
-  //   if (session.data.session?.user.aud !== 'authenticated') {
-  //     redirect('/');
-  //   } else {
-  //     console.log('xxx', session.data.session.user.id);
-
-  //     setCurrentUserID(session.data.session.user.id);
-  //   }
-  // };
 
   const getUsersTeams = async (userID: string) => {
     const teams = await getAUsersTeams(userID);
@@ -38,10 +25,16 @@ const Dashboard = () => {
   useEffect(() => {
     // getPlayers();
     // checkSession();
-    if (currentUserTeams?.length === 0) {
-      getUsersTeams(currentUserID);
-    }
-  }, [currentUserID, currentUserTeams]);
+
+    const fetchUserID = async () => {
+      const userID = await getUserID();
+      console.log('userID', userID);
+      if (currentUserTeams?.length === 0) {
+        getUsersTeams(userID);
+      }
+    };
+    fetchUserID();
+  }, [currentUserTeams]);
   return (
     <div className="grid justify-items-center">
       <TypographyWrapper
