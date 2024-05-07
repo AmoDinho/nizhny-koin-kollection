@@ -3,8 +3,9 @@ import { useSearchParams } from 'next/navigation';
 import PageOne from './tabs/pageOne';
 import PageTwo from './tabs/pageTwo';
 import PageThree from './tabs/pageThree';
+import isAuth from '@/components/hocs/isAuth';
 
-export default function CreateTeam() {
+function CreateTeam() {
   const searchParams = useSearchParams();
   const currentTabState = searchParams?.get('tabState') || '';
   console.log(`currentTabState: ${currentTabState}`);
@@ -23,3 +24,5 @@ export default function CreateTeam() {
   };
   return <>{renderComponent(currentTabState)}</>;
 }
+
+export default isAuth(CreateTeam);

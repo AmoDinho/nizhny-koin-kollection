@@ -17,7 +17,7 @@ import { addPlayersUserTeam } from '@/services/playersUserTeams';
 import type { ITeam, IUserTeam, ICreateUserTeamPayload } from '@/types/types';
 export default function PageThree() {
   const team = useRecoilValue(createTeamState);
-  const user = useRecoilValue(cookieUserSession);
+  // const user = useRecoilValue(cookieUserSession);
 
   const setTeamState = useSetRecoilState(createTeamState);
   const searchParams = useSearchParams();

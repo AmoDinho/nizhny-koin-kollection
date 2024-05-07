@@ -16,6 +16,7 @@ export default function useRouterUtil() {
   ) => {
     const newParams = new URLSearchParams(searchParams);
 
+    console.log('routeTarget', routeTarget);
     if (routeTarget) {
       newParams.set(stateAction, routeTarget);
       console.log('xx-1');
