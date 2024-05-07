@@ -6,6 +6,7 @@ import { IPlayersInTeam } from '@/types/types';
 import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { getPlayersInATeam } from '@/services/playersUserTeams';
+import ParentImage from '@/components/image/parentImage';
 
 function ViewTeam() {
   const searchParams = useParams();
@@ -28,6 +29,12 @@ function ViewTeam() {
   return (
     <>
       <TypographyWrapper WrapperTypes="HeadingOne">Your Team</TypographyWrapper>
+
+      <div className="grid grid-cols-2 gap-4">
+        {currentTeam?.map((player, playerIndex) => (
+          <ParentImage imagePath={player?.imageUrl} key={playerIndex} />
+        ))}
+      </div>
     </>
   );
 }
